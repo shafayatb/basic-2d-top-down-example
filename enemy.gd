@@ -1,0 +1,22 @@
+extends CharacterBody2D
+
+@onready var player_node: CharacterBody2D = get_parent().get_node("Player")
+@onready var hit_area: Area2D = $HitArea
+
+var speed: float = 180.0
+
+func _ready() -> void:
+	hit_area.body_entered.connect(hit)
+	
+func _physics_process(delta: float) -> void:
+	if player_node:
+		var direction = (player_node.global_position - global_position).normalized()
+		look_at(player_node.global_position)
+		velocity = lerp(velocity, direction * speed, 0.5 * delta)
+		move_and_slide()
+
+
+func hit(body: Node2D)-> void:
+	if body == player_node:
+		var knockback_direction = (body.global_position - global_position).normalized()
+		body.apply_knockback(knockback_direction, 150.0, 0.12)
