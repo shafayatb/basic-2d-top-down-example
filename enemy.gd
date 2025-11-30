@@ -9,11 +9,12 @@ func _ready() -> void:
 	hit_area.body_entered.connect(hit)
 	
 func _physics_process(delta: float) -> void:
-	if player_node:
-		var direction = (player_node.global_position - global_position).normalized()
-		look_at(player_node.global_position)
-		velocity = lerp(velocity, direction * speed, 0.5 * delta)
-		move_and_slide()
+	pass
+	#if player_node:
+		#var direction = (player_node.global_position - global_position).normalized()
+		#look_at(player_node.global_position)
+		#velocity = lerp(velocity, direction * speed, 0.5 * delta)
+		#move_and_slide()
 
 
 func hit(body: Node2D)-> void:
