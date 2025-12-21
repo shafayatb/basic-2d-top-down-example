@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://bm4v5ulnu0n8w"]
+
+[ext_resource type="Texture2D" uid="uid://dta4665i0rs3m" path="res://icon.svg" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://c862gema2tgoo" path="res://utils/state_machine.gd" id="3_i3pqv"]
+[ext_resource type="Script" uid="uid://do8iluil3rmt2" path="res://utils/walk_state.gd" id="3_sweqy"]
+[ext_resource type="Script" uid="uid://cwere4u6usod4" path="res://utils/idle_state.gd" id="4_2hs0m"]
+[ext_resource type="Script" uid="uid://cbf6y3vxobj0e" path="res://utils/dash_state.gd" id="5_1jxqw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
+size = Vector2(130, 127)
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(0.39215687, 1, 1, 1)
+position = Vector2(0, -3)
+texture = ExtResource("1_4flbx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_onrkg")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_i3pqv")
+initial_state = NodePath("IdleState")
+metadata/_custom_type_script = "uid://c862gema2tgoo"
+
+[node name="WalkState" type="Node" parent="StateMachine"]
+script = ExtResource("3_sweqy")
+metadata/_custom_type_script = "uid://do8iluil3rmt2"
+
+[node name="IdleState" type="Node" parent="StateMachine"]
+script = ExtResource("4_2hs0m")
+metadata/_custom_type_script = "uid://cwere4u6usod4"
+
+[node name="DashState" type="Node" parent="StateMachine"]
+script = ExtResource("5_1jxqw")
+metadata/_custom_type_script = "uid://cbf6y3vxobj0e"
