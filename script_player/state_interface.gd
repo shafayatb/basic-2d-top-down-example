@@ -4,7 +4,7 @@ class_name  StateInterface
 
 var state_machine: StateMachineNew
 
-func enter(prev_state: String = "") -> void:
+func enter(prev_state: StateTypes.State) -> void:
 	pass
 	
 func exit():

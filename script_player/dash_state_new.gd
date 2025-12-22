@@ -6,13 +6,11 @@ var character: CharacterBody2D
 
 const DASH_SPEED: float = 1500.0
 const DASH_TIME: float = 0.12
-var can_dash: bool = true
+
 var dash_timer: float = 0.0
 var dash_dir: Vector2 = Vector2.ZERO
-const DASH_RELOAD_COST: float = 0.5
-var dash_reload_time: float = 0.0
 
-func enter(prev_state: String = "") -> void:
+func enter(prev_state: StateTypes.State) -> void:
 	character = state_machine.owner
 	
 	dash_timer = DASH_TIME
@@ -38,6 +36,6 @@ func exit_dash() -> void:
 		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	)
 	if direction != Vector2.ZERO:
-		state_machine.change_state("movestatenew")
+		state_machine.change_state(StateTypes.State.MOVE)
 	else:
-		state_machine.change_state("idlestatenew")
+		state_machine.change_state(StateTypes.State.IDLE)

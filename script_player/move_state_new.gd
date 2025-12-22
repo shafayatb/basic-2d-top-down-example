@@ -8,7 +8,7 @@ const MAX_SPEED: float = 64.5
 const ACCELERATION: float = 18.5
 const FRICTION: float = 22.5
 
-func enter(prev_state: String = "") -> void:
+func enter(prev_state: StateTypes.State) -> void:
 	character = state_machine.owner
 	
 func physics_update(delta: float):
@@ -18,7 +18,7 @@ func physics_update(delta: float):
 	).normalized()
 	
 	if direction.x == 0 and direction.y == 0:
-		state_machine.change_state("idlestatenew")
+		state_machine.change_state(StateTypes.State.IDLE)
 		return
 		
 	var lerp_weight = delta * (ACCELERATION if direction else FRICTION)
@@ -27,4 +27,4 @@ func physics_update(delta: float):
 
 func handle_input(event: InputEvent):
 	if Input.is_action_just_pressed("Dash"):
-		state_machine.change_state("dashstatenew")
+		state_machine.change_state(StateTypes.State.DASH)
