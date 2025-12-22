@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://bm4v5ulnu0n8w"]
 
 [ext_resource type="Texture2D" uid="uid://dta4665i0rs3m" path="res://icon.svg" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://c862gema2tgoo" path="res://utils/state_machine.gd" id="3_i3pqv"]
-[ext_resource type="Script" uid="uid://do8iluil3rmt2" path="res://utils/walk_state.gd" id="3_sweqy"]
-[ext_resource type="Script" uid="uid://cwere4u6usod4" path="res://utils/idle_state.gd" id="4_2hs0m"]
-[ext_resource type="Script" uid="uid://cbf6y3vxobj0e" path="res://utils/dash_state.gd" id="5_1jxqw"]
+[ext_resource type="Script" uid="uid://c862gema2tgoo" path="res://node_state_machine/state_machine.gd" id="3_i3pqv"]
+[ext_resource type="Script" uid="uid://do8iluil3rmt2" path="res://node_state_machine/walk_state.gd" id="3_sweqy"]
+[ext_resource type="Script" uid="uid://cwere4u6usod4" path="res://node_state_machine/idle_state.gd" id="4_2hs0m"]
+[ext_resource type="Script" uid="uid://cbf6y3vxobj0e" path="res://node_state_machine/dash_state.gd" id="5_1jxqw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(130, 127)
