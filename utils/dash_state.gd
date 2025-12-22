@@ -18,7 +18,7 @@ func enter() -> void:
 		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	).normalized()
 	if dash_dir == Vector2.ZERO:
-		dash_dir = Vector2.RIGHT
+		dash_dir = Vector2.RIGHT.normalized()
 	character.velocity = dash_dir * DASH_SPEED
 
 func physics_update(delta: float):
@@ -28,6 +28,7 @@ func physics_update(delta: float):
 		character.velocity = dash_dir * DASH_SPEED
 	else:
 		exit_dash()
+	character.move_and_slide()
 
 func exit_dash() -> void:
 	var direction = Vector2(
