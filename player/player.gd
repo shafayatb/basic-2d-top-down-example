@@ -2,7 +2,9 @@ extends CharacterBody2D
 
 
 @onready var animation_tree: AnimationTree = $AnimationTree
-
+@onready var playback: AnimationNodeStateMachinePlayback = \
+	animation_tree.get("parameters/playback")
+	
 const max_speed: int = 100
 const acceleration: int = 9
 const friction: int = 5
@@ -26,12 +28,11 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
-	if input != Vector2.ZERO:
-		animation_tree["parameters/conditions/is_moving"] = true
-		animation_tree["parameters/conditions/not_moving"] = false
+	if input.length() > 0.01:
+		playback.travel("Move")
 	else:
-		animation_tree["parameters/conditions/is_moving"] = false
-		animation_tree["parameters/conditions/not_moving"] = true
+		playback.travel("Idle")
+
 	
 	animation_tree["parameters/Idle/blend_position"] = input
 	animation_tree["parameters/Move/blend_position"] = input
