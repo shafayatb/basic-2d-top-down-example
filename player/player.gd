@@ -1,11 +1,19 @@
 extends CharacterBody2D
 
+
+@onready var animation_tree: AnimationTree = $AnimationTree
+
 const max_speed: int = 100
 const acceleration: int = 9
 const friction: int = 5
 
 var knockback: Vector2 = Vector2.ZERO
 var knockback_timer: float = 0.0
+
+var input: Vector2 = Vector2.ZERO
+
+func _ready() -> void:
+	animation_tree.active = true
 
 func _physics_process(delta: float) -> void:
 	if knockback_timer > 0.0:
@@ -18,8 +26,18 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
+	if input != Vector2.ZERO:
+		animation_tree["parameters/conditions/is_moving"] = true
+		animation_tree["parameters/conditions/not_moving"] = false
+	else:
+		animation_tree["parameters/conditions/is_moving"] = false
+		animation_tree["parameters/conditions/not_moving"] = true
+	
+	animation_tree["parameters/Idle/blend_position"] = input
+	animation_tree["parameters/Move/blend_position"] = input
+	
 func movement(delta: float) -> void:
-	var input = Vector2(
+	input = Vector2(
 		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
 		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	).normalized()
