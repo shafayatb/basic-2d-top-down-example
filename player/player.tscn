@@ -196,6 +196,7 @@ blend_point_2/node = SubResource("AnimationNodeAnimation_rgyib")
 blend_point_2/pos = Vector2(0, -1)
 blend_point_3/node = SubResource("AnimationNodeAnimation_yllr7")
 blend_point_3/pos = Vector2(1, 0)
+blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hg6s5"]
 animation = &"move_left"
@@ -218,8 +219,10 @@ blend_point_2/node = SubResource("AnimationNodeAnimation_2ieo8")
 blend_point_2/pos = Vector2(0, 1)
 blend_point_3/node = SubResource("AnimationNodeAnimation_ebec5")
 blend_point_3/pos = Vector2(0, -1)
+sync = true
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wodsf"]
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_32hag"]
 advance_mode = 2
@@ -277,4 +280,4 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/is_moving = false
 parameters/conditions/not_moving = false
 parameters/Idle/blend_position = Vector2(-0.9953052, 0.010988951)
-parameters/Move/blend_position = Vector2(0, 1)
+parameters/Move/blend_position = Vector2(0.27814567, 0.21973085)

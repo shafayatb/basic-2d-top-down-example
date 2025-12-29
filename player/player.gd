@@ -28,10 +28,12 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
-	if input.length() > 0.01:
-		playback.travel("Move")
+	if input != Vector2.ZERO:
+		animation_tree["parameters/conditions/is_moving"] = true 
+		animation_tree["parameters/conditions/not_moving"] = false
 	else:
-		playback.travel("Idle")
+		animation_tree["parameters/conditions/is_moving"] = false 
+		animation_tree["parameters/conditions/not_moving"] = true
 
 	
 	animation_tree["parameters/Idle/blend_position"] = input
