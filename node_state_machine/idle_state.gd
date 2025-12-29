@@ -2,8 +2,13 @@ extends State
 
 class_name IdleState
 
+var player: CharacterBody2D
+
 func enter():
 	print("IDLE STATE")
+	player = state_machine.get_parent()
+	player.playback.travel("Idle")
+	player.animation_tree["parameters/Idle/blend_position"] = player.input_direction
 
 func handle_input(event: InputEvent):
 	if Input.is_action_just_pressed("Dash"):

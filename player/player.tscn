@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=3 uid="uid://bm4v5ulnu0n8w"]
 
 [ext_resource type="Texture2D" uid="uid://dta4665i0rs3m" path="res://icon.svg" id="1_4flbx"]
-[ext_resource type="Script" uid="uid://ccpxtr46d5ck1" path="res://player/player.gd" id="1_g6k8r"]
+[ext_resource type="Script" uid="uid://pctoih45moys" path="res://player/player.gd" id="1_g6k8r"]
 [ext_resource type="Script" uid="uid://c862gema2tgoo" path="res://node_state_machine/state_machine.gd" id="3_i3pqv"]
 [ext_resource type="Script" uid="uid://do8iluil3rmt2" path="res://node_state_machine/walk_state.gd" id="3_sweqy"]
 [ext_resource type="Script" uid="uid://cwere4u6usod4" path="res://node_state_machine/idle_state.gd" id="4_2hs0m"]
@@ -252,7 +252,6 @@ texture = ExtResource("1_4flbx")
 shape = SubResource("RectangleShape2D_onrkg")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-process_mode = 4
 script = ExtResource("3_i3pqv")
 initial_state = NodePath("IdleState")
 metadata/_custom_type_script = "uid://c862gema2tgoo"

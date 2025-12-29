@@ -6,6 +6,12 @@ const MAX_SPEED: float = 64.5
 const ACCELERATION: float = 18.5
 const FRICTION: float = 22.5
 
+var player: CharacterBody2D
+
+func enter():
+	player = state_machine.get_parent()
+	player.playback.travel("Move")
+
 func physics_update(delta: float):
 	var character = state_machine.get_parent()
 	var direction = Vector2(
@@ -13,11 +19,16 @@ func physics_update(delta: float):
 		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	).normalized()
 	
-	if direction.x == 0 and direction.y == 0:
-		state_machine.change_state("idlestate")
-		return
-		
-	var lerp_weight = delta * (ACCELERATION if direction else FRICTION)
+	if direction.length() < 0.1:  # Almost no input
+		var lerp_weight = delta * FRICTION
+		player.velocity = lerp(player.velocity, Vector2.ZERO, lerp_weight)
+		if player.velocity.length() < 5.0:  # Fully stopped
+			state_machine.change_state("idlestate")
+			return
+	
+	player.input_direction = direction
+	player.animation_tree["parameters/Move/blend_position"] = direction
+	var lerp_weight = delta * ACCELERATION
 	character.velocity = lerp(character.velocity, direction * MAX_SPEED, lerp_weight)
 	character.move_and_slide()
 
