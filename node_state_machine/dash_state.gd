@@ -2,7 +2,7 @@ extends State
 
 class_name  DashState
 
-const DASH_SPEED: float = 1500.0
+const DASH_SPEED: float = 500.0
 const DASH_TIME: float = 0.12
 var can_dash: bool = true
 var dash_timer: float = 0.0
@@ -26,9 +26,11 @@ func physics_update(delta: float):
 	dash_timer -= delta
 	if dash_timer > 0.0:
 		character.velocity = dash_dir * DASH_SPEED
+		character.move_and_slide()
 	else:
 		exit_dash()
-	character.move_and_slide()
+		return
+	
 
 func exit_dash() -> void:
 	var direction = Vector2(

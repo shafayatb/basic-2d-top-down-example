@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bm4v5ulnu0n8w"]
+[gd_scene load_steps=30 format=3 uid="uid://bm4v5ulnu0n8w"]
 
 [ext_resource type="Texture2D" uid="uid://dta4665i0rs3m" path="res://icon.svg" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://pctoih45moys" path="res://player/player.gd" id="1_g6k8r"]
@@ -165,9 +165,13 @@ tracks/1/keys = {
 "values": [Vector2(1, 1), Vector2(1, 1.390625)]
 }
 
+[sub_resource type="Animation" id="Animation_2ieo8"]
+resource_name = "dash"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rgyib"]
 _data = {
 &"RESET": SubResource("Animation_g6k8r"),
+&"dash": SubResource("Animation_2ieo8"),
 &"idle": SubResource("Animation_qjkh3"),
 &"move_down": SubResource("Animation_8t03j"),
 &"move_left": SubResource("Animation_rgyib"),

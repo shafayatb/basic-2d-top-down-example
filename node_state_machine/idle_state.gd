@@ -7,6 +7,7 @@ var player: CharacterBody2D
 func enter():
 	print("IDLE STATE")
 	player = state_machine.get_parent()
+	player.velocity = Vector2.ZERO
 	player.playback.travel("Idle")
 	player.animation_tree["parameters/Idle/blend_position"] = player.input_direction
 
