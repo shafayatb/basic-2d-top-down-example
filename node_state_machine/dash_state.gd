@@ -2,6 +2,7 @@ extends State
 
 class_name  DashState
 
+const STATE_TYPE = StateTypes.State.DASH
 const DASH_SPEED: float = 500.0
 const DASH_TIME: float = 0.12
 var can_dash: bool = true
@@ -21,7 +22,7 @@ func enter() -> void:
 	if dash_dir == Vector2.ZERO:
 		dash_dir = Vector2.RIGHT.normalized()
 	player.playback.travel("Dash")
-	player.animation_tree["parameters/Dash/blend_position"] = player.input_direction
+	player.animation_tree["parameters/Dash/blend_position"] = dash_dir
 	player.velocity = dash_dir * DASH_SPEED
 
 func physics_update(delta: float):
@@ -40,7 +41,7 @@ func exit_dash() -> void:
 		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	)
 	if direction != Vector2.ZERO:
-		state_machine.change_state("walkstate")
+		state_machine.change_state(StateTypes.State.MOVE)
 	else:
-		state_machine.change_state("idlestate")
+		state_machine.change_state(StateTypes.State.IDLE)
 	
