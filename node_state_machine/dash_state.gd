@@ -9,9 +9,10 @@ var dash_timer: float = 0.0
 var dash_dir: Vector2 = Vector2.ZERO
 const DASH_RELOAD_COST: float = 0.5
 var dash_reload_time: float = 0.0
+var player: CharacterBody2D
 
 func enter() -> void:
-	var character = state_machine.get_parent()
+	player = state_machine.get_parent()
 	dash_timer = DASH_TIME
 	dash_dir = Vector2(
 		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
@@ -19,14 +20,15 @@ func enter() -> void:
 	).normalized()
 	if dash_dir == Vector2.ZERO:
 		dash_dir = Vector2.RIGHT.normalized()
-	character.velocity = dash_dir * DASH_SPEED
+	player.playback.travel("Dash")
+	player.animation_tree["parameters/Dash/blend_position"] = player.input_direction
+	player.velocity = dash_dir * DASH_SPEED
 
 func physics_update(delta: float):
-	var character = state_machine.get_parent()
 	dash_timer -= delta
 	if dash_timer > 0.0:
-		character.velocity = dash_dir * DASH_SPEED
-		character.move_and_slide()
+		player.velocity = dash_dir * DASH_SPEED
+		player.move_and_slide()
 	else:
 		exit_dash()
 		return

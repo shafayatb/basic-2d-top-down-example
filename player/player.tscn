@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bm4v5ulnu0n8w"]
+[gd_scene load_steps=39 format=3 uid="uid://bm4v5ulnu0n8w"]
 
 [ext_resource type="Texture2D" uid="uid://dta4665i0rs3m" path="res://icon.svg" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://pctoih45moys" path="res://player/player.gd" id="1_g6k8r"]
@@ -35,6 +35,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Icon:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.39215687, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_qjkh3"]
@@ -167,6 +179,19 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_2ieo8"]
 resource_name = "dash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.39215687, 1, 1, 0.16862746), Color(0.39215687, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rgyib"]
 _data = {
@@ -178,6 +203,28 @@ _data = {
 &"move_right": SubResource("Animation_boad6"),
 &"move_up": SubResource("Animation_hg6s5")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kb6p2"]
+animation = &"dash"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wodsf"]
+animation = &"dash"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_32hag"]
+animation = &"dash"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tqiix"]
+animation = &"dash"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_e7oew"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_kb6p2")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_wodsf")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_32hag")
+blend_point_2/pos = Vector2(1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_tqiix")
+blend_point_3/pos = Vector2(0, -1)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g6k8r"]
 animation = &"idle"
@@ -236,13 +283,31 @@ advance_condition = &"is_moving"
 advance_mode = 2
 advance_condition = &"not_moving"
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_c35mf"]
+advance_mode = 2
+advance_condition = &"is_dashing"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_65viv"]
+advance_mode = 2
+advance_condition = &"not_moving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x7c3f"]
+advance_mode = 2
+advance_condition = &"is_moving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bjvpn"]
+advance_mode = 2
+advance_condition = &"is_dashing"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_2ieo8"]
+states/Dash/node = SubResource("AnimationNodeBlendSpace2D_e7oew")
+states/Dash/position = Vector2(698.5926, 125)
 states/Idle/node = SubResource("AnimationNodeBlendSpace2D_kb6p2")
 states/Idle/position = Vector2(481.59256, 53)
 states/Move/node = SubResource("AnimationNodeBlendSpace2D_8t03j")
-states/Move/position = Vector2(492.9463, 136)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_wodsf"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_32hag"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_tqiix")]
-graph_offset = Vector2(-93.40743, 0)
+states/Move/position = Vector2(448.9463, 202)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_wodsf"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_32hag"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_tqiix"), "Idle", "Dash", SubResource("AnimationNodeStateMachineTransition_c35mf"), "Dash", "Idle", SubResource("AnimationNodeStateMachineTransition_65viv"), "Dash", "Move", SubResource("AnimationNodeStateMachineTransition_x7c3f"), "Move", "Dash", SubResource("AnimationNodeStateMachineTransition_bjvpn")]
+graph_offset = Vector2(243.28537, 0)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
@@ -280,7 +345,9 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_2ieo8")
 anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/is_dashing = false
 parameters/conditions/is_moving = false
 parameters/conditions/not_moving = false
+parameters/Dash/blend_position = Vector2(0.03752756, 1.0358744)
 parameters/Idle/blend_position = Vector2(-0.9953052, 0.010988951)
 parameters/Move/blend_position = Vector2(0.27814567, 0.21973085)
