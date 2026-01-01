@@ -4,5 +4,6 @@ class_name StateTypes
 enum State {
 	IDLE,
 	MOVE,
-	DASH
+	DASH,
+	KNOCKBACK
 }

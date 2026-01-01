@@ -6,7 +6,7 @@ extends CharacterBody2D
 var speed: float = 180.0
 
 func _ready() -> void:
-	hit_area.body_entered.connect(hit)
+	hit_area.body_entered.connect(_hit)
 	
 func _physics_process(delta: float) -> void:
 	pass
@@ -17,7 +17,8 @@ func _physics_process(delta: float) -> void:
 		#move_and_slide()
 
 
-func hit(body: Node2D)-> void:
+func _hit(body: Node2D)-> void:
 	if body == player_node:
 		var knockback_direction = (body.global_position - global_position).normalized()
-		body.apply_knockback(knockback_direction, 150.0, 0.12)
+		body.knockback_state.apply_knockback(knockback_direction, 500.0, 0.55)
+		body.state_machine.change_state(StateTypes.State.KNOCKBACK)
