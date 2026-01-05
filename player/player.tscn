@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bm4v5ulnu0n8w"]
+[gd_scene load_steps=42 format=3 uid="uid://bm4v5ulnu0n8w"]
 
 [ext_resource type="Texture2D" uid="uid://dta4665i0rs3m" path="res://icon.svg" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://pctoih45moys" path="res://player/player.gd" id="1_g6k8r"]
@@ -49,6 +49,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0.39215687, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Schimter:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-3.4972274]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Schimter:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.3, 0.3)]
 }
 
 [sub_resource type="Animation" id="Animation_2ieo8"]
@@ -195,6 +219,35 @@ tracks/1/keys = {
 "values": [Vector2(1, 1), Vector2(1, 1.390625)]
 }
 
+[sub_resource type="Animation" id="Animation_ebec5"]
+resource_name = "slash"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Schimter:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, -2),
+"update": 0,
+"values": [-3.4972274, 0.22165681500327966]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Schimter:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(-0.3, 0.3), Vector2(-0.28, 0.295)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rgyib"]
 _data = {
 &"RESET": SubResource("Animation_g6k8r"),
@@ -203,7 +256,8 @@ _data = {
 &"move_down": SubResource("Animation_8t03j"),
 &"move_left": SubResource("Animation_rgyib"),
 &"move_right": SubResource("Animation_boad6"),
-&"move_up": SubResource("Animation_hg6s5")
+&"move_up": SubResource("Animation_hg6s5"),
+&"slash": SubResource("Animation_ebec5")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kb6p2"]
@@ -361,7 +415,7 @@ parameters/Move/blend_position = Vector2(0.27814567, 0.21973085)
 
 [node name="Schimter" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 1, 1)
-position = Vector2(44, -12.000046)
+position = Vector2(-7.9999986, 44)
 rotation = -3.4972274
 scale = Vector2(-0.3, 0.3)
 texture = ExtResource("8_rgyib")
