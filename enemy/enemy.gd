@@ -3,6 +3,8 @@ extends CharacterBody2D
 @onready var player_node: CharacterBody2D = get_parent().get_node("Player")
 @onready var hit_area: Area2D = $HitArea
 
+@export var health: float = 3.0
+
 var speed: float = 180.0
 
 func _ready() -> void:
