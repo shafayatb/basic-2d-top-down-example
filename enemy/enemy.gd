@@ -9,6 +9,7 @@ extends CharacterBody2D
 var speed: float = 180.0
 
 func _ready() -> void:
+	add_to_group("enemy")
 	hit_area.body_entered.connect(_hit)
 	
 func _physics_process(delta: float) -> void:

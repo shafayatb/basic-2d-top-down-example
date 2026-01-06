@@ -9,6 +9,33 @@ size = Vector2(108, 116)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7k104"]
 size = Vector2(124, 128)
 
+[sub_resource type="Animation" id="Animation_ppra6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.96862745, 0.38431373, 0.3764706, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_ofsxj"]
 resource_name = "take_damage"
 length = 0.35
@@ -38,40 +65,13 @@ tracks/1/keys = {
 "values": [Vector2(1, 1), Vector2(0.6, 0.6), Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_ppra6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.96862745, 0.38431373, 0.3764706, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p200p"]
 _data = {
 &"RESET": SubResource("Animation_ppra6"),
 &"take_damage": SubResource("Animation_ofsxj")
 }
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_4gyqm")
 
