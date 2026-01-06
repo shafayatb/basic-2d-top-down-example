@@ -14,6 +14,15 @@ config/name="Basic 2D top down example"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[file_customization]
+
+folder_colors={
+"res://assets/": "yellow",
+"res://enemy/": "red",
+"res://node_state_machine/": "teal",
+"res://script_player/": "green"
+}
+
 [input]
 
 Dash={
