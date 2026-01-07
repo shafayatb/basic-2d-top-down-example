@@ -1,7 +1,37 @@
-[gd_scene load_steps=7 format=3 uid="uid://cechlsw0a43lt"]
+[gd_scene load_steps=18 format=3 uid="uid://cechlsw0a43lt"]
 
 [ext_resource type="Texture2D" uid="uid://cbb7c22j8pybc" path="res://assets/schimter.png" id="1_iuva7"]
 [ext_resource type="Script" uid="uid://dlw7itprk41pp" path="res://weapons/sword.gd" id="1_oivwf"]
+[ext_resource type="Script" uid="uid://c862gema2tgoo" path="res://node_state_machine/state_machine.gd" id="3_5ogyc"]
+[ext_resource type="Script" uid="uid://bgc65lp8qhouh" path="res://weapons/states/sword_idle.gd" id="4_61ffb"]
+[ext_resource type="Script" uid="uid://caci7psd724x5" path="res://weapons/states/sword_attack.gd" id="4_m4avp"]
+
+[sub_resource type="Animation" id="Animation_oivwf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Schimter:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-3.4972274]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Schimter:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.3, 0.3)]
+}
 
 [sub_resource type="Animation" id="Animation_iuva7"]
 resource_name = "slash"
@@ -46,33 +76,6 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_oivwf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Schimter:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-3.4972274]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Schimter:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-0.3, 0.3)]
-}
-
 [sub_resource type="Animation" id="Animation_nisn2"]
 resource_name = "sword_return"
 length = 0.65
@@ -109,6 +112,33 @@ _data = {
 &"sword_return": SubResource("Animation_nisn2")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oivwf"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nisn2"]
+animation = &"slash"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5ogyc"]
+animation = &"sword_return"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m4avp"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_61ffb"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8ssqk"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ieqn5"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_nx8aw"]
+states/Idle/node = SubResource("AnimationNodeAnimation_oivwf")
+states/Idle/position = Vector2(351, 59)
+states/Slash/node = SubResource("AnimationNodeAnimation_nisn2")
+states/Slash/position = Vector2(449, 181)
+states/SwordReturn/node = SubResource("AnimationNodeAnimation_5ogyc")
+states/SwordReturn/position = Vector2(624, 72)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_m4avp"), "Idle", "Slash", SubResource("AnimationNodeStateMachineTransition_61ffb"), "Slash", "SwordReturn", SubResource("AnimationNodeStateMachineTransition_8ssqk"), "SwordReturn", "Idle", SubResource("AnimationNodeStateMachineTransition_ieqn5")]
+
 [node name="Sword" type="Node2D"]
 script = ExtResource("1_oivwf")
 
@@ -124,3 +154,20 @@ offset = Vector2(-200, 200)
 libraries = {
 &"": SubResource("AnimationLibrary_5ogyc")
 }
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_nx8aw")
+anim_player = NodePath("../AnimationPlayer")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_5ogyc")
+initial_state = NodePath("SwordIdle")
+metadata/_custom_type_script = "uid://c862gema2tgoo"
+
+[node name="SwordIdle" type="Node" parent="StateMachine"]
+script = ExtResource("4_61ffb")
+metadata/_custom_type_script = "uid://bgc65lp8qhouh"
+
+[node name="SwordAttack" type="Node" parent="StateMachine"]
+script = ExtResource("4_m4avp")
+metadata/_custom_type_script = "uid://caci7psd724x5"
