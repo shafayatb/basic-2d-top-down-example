@@ -4,8 +4,10 @@ extends Node2D
 @onready var area_2d: Area2D = $Area2D
 
 var weapon_damage: float = 1.0
+var direction: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
+	look_at(direction)
 	animation_player.connect("animation_finished", animation_finished)
 	area_2d.connect("body_entered",body_entered)
 	animation_player.play("show_slash")
