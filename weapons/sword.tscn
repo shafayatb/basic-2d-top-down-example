@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://cechlsw0a43lt"]
+[gd_scene load_steps=13 format=3 uid="uid://cechlsw0a43lt"]
 
 [ext_resource type="Texture2D" uid="uid://cbb7c22j8pybc" path="res://assets/schimter.png" id="1_iuva7"]
 [ext_resource type="Script" uid="uid://dlw7itprk41pp" path="res://weapons/sword.gd" id="1_oivwf"]
 [ext_resource type="Script" uid="uid://c862gema2tgoo" path="res://node_state_machine/state_machine.gd" id="3_5ogyc"]
+[ext_resource type="AnimationNodeStateMachine" uid="uid://b2jdi3wqteunp" path="res://weapons/states/weapon_animation_state_machine.tres" id="3_61ffb"]
 [ext_resource type="Script" uid="uid://bgc65lp8qhouh" path="res://weapons/states/sword_idle.gd" id="4_61ffb"]
 [ext_resource type="Script" uid="uid://caci7psd724x5" path="res://weapons/states/sword_attack.gd" id="4_m4avp"]
 
@@ -112,32 +113,16 @@ _data = {
 &"sword_return": SubResource("Animation_nisn2")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oivwf"]
-animation = &"RESET"
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_61ffb"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nisn2"]
-animation = &"slash"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5ogyc"]
-animation = &"sword_return"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m4avp"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_61ffb"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8ssqk"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ieqn5"]
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_nx8aw"]
-states/Idle/node = SubResource("AnimationNodeAnimation_oivwf")
-states/Idle/position = Vector2(351, 59)
-states/Slash/node = SubResource("AnimationNodeAnimation_nisn2")
-states/Slash/position = Vector2(449, 181)
-states/SwordReturn/node = SubResource("AnimationNodeAnimation_5ogyc")
-states/SwordReturn/position = Vector2(624, 72)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_m4avp"), "Idle", "Slash", SubResource("AnimationNodeStateMachineTransition_61ffb"), "Slash", "SwordReturn", SubResource("AnimationNodeStateMachineTransition_8ssqk"), "SwordReturn", "Idle", SubResource("AnimationNodeStateMachineTransition_ieqn5")]
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_8ssqk"]
+graph_offset = Vector2(-395.9926, 48.120407)
+nodes/output/position = Vector2(540, 200)
+nodes/WeaponStates/node = ExtResource("3_61ffb")
+nodes/WeaponStates/position = Vector2(-95.07724, 163.75403)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_61ffb")
+nodes/TimeScale/position = Vector2(249.8032, 141.9382)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"WeaponStates"]
 
 [node name="Sword" type="Node2D"]
 script = ExtResource("1_oivwf")
@@ -156,8 +141,9 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_nx8aw")
+tree_root = SubResource("AnimationNodeBlendTree_8ssqk")
 anim_player = NodePath("../AnimationPlayer")
+parameters/TimeScale/scale = 1.0
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_5ogyc")

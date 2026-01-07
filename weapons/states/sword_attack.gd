@@ -13,6 +13,8 @@ func enter():
 	weapon = state_machine.get_parent()
 	if not weapon.animation_tree.is_connected("animation_finished", on_animation_finished):
 		weapon.animation_tree.connect("animation_finished", on_animation_finished)
+	var slash_anim_length = weapon.animation_player.get_animation("slash").length
+	weapon.animation_tree.set("parameters/TimeScale/scale", slash_anim_length / slash_time) 
 	weapon.playback.travel("Slash")
 
 func exit():
@@ -22,6 +24,8 @@ func exit():
 func on_animation_finished(anim_name: StringName):
 	print(anim_name)
 	if anim_name == "slash":
+		var slash_anim_length = weapon.animation_player.get_animation("sword_return").length
+		weapon.animation_tree.set("parameters/TimeScale/scale", slash_anim_length / sword_return_time)
 		weapon.playback.travel("SwordReturn")
 	elif anim_name == "sword_return":
 		print("changing to sword idle")

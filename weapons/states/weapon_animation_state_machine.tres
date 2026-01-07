@@ -1,0 +1,28 @@
+[gd_resource type="AnimationNodeStateMachine" load_steps=8 format=3 uid="uid://b2jdi3wqteunp"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oivwf"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nisn2"]
+animation = &"slash"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5ogyc"]
+animation = &"sword_return"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m4avp"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_61ffb"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8ssqk"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ieqn5"]
+
+[resource]
+states/Idle/node = SubResource("AnimationNodeAnimation_oivwf")
+states/Idle/position = Vector2(351, 59)
+states/Slash/node = SubResource("AnimationNodeAnimation_nisn2")
+states/Slash/position = Vector2(449, 181)
+states/SwordReturn/node = SubResource("AnimationNodeAnimation_5ogyc")
+states/SwordReturn/position = Vector2(624, 72)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_m4avp"), "Idle", "Slash", SubResource("AnimationNodeStateMachineTransition_61ffb"), "Slash", "SwordReturn", SubResource("AnimationNodeStateMachineTransition_8ssqk"), "SwordReturn", "Idle", SubResource("AnimationNodeStateMachineTransition_ieqn5")]
