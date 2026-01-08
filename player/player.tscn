@@ -324,12 +324,13 @@ texture = ExtResource("1_4flbx")
 
 [node name="Sword" parent="Icon" instance=ExtResource("3_rgyib")]
 
-[node name="Gun" parent="Icon" instance=ExtResource("4_hg6s5")]
-scale = Vector2(0.5, 0.5)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("RectangleShape2D_onrkg")
+
+[node name="Gun" parent="." instance=ExtResource("4_hg6s5")]
+position = Vector2(-4.656613e-10, -2.456677)
+scale = Vector2(0.50000006, 0.50000006)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_i3pqv")

@@ -27,7 +27,7 @@ func shoot():
 	var new_bullet = bullet_scene.instantiate()
 	new_bullet.global_position = shoot_pos.global_position
 	new_bullet.global_rotation = shoot_pos.global_rotation
-	get_parent().add_child(new_bullet)
+	get_tree().root.add_child(new_bullet)
 	
 func _shoot_timeout() -> void:
 	can_shoot = true
