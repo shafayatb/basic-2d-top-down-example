@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc1u2sffd06km"
-path="res://.godot/imported/slash_sheet.png-9682374471aadf92afbd79788eaf9251.ctex"
+uid="uid://bv35ohexunqyv"
+path="res://.godot/imported/blue_bullet.png-1c505656ec0e9426ed464a84c446b1b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/slash_sheet.png"
-dest_files=["res://.godot/imported/slash_sheet.png-9682374471aadf92afbd79788eaf9251.ctex"]
+source_file="res://assets/bullets/blue_bullet.png"
+dest_files=["res://.godot/imported/blue_bullet.png-1c505656ec0e9426ed464a84c446b1b4.ctex"]
 
 [params]
 

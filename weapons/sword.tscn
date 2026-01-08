@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://cechlsw0a43lt"]
 
-[ext_resource type="Texture2D" uid="uid://cbb7c22j8pybc" path="res://assets/schimter.png" id="1_iuva7"]
+[ext_resource type="Texture2D" uid="uid://cbb7c22j8pybc" path="res://assets/sword/schimter.png" id="1_iuva7"]
 [ext_resource type="Script" uid="uid://dlw7itprk41pp" path="res://weapons/sword.gd" id="1_oivwf"]
 [ext_resource type="Script" uid="uid://c862gema2tgoo" path="res://node_state_machine/state_machine.gd" id="3_5ogyc"]
 [ext_resource type="AnimationNodeStateMachine" uid="uid://b2jdi3wqteunp" path="res://weapons/states/weapon_animation_state_machine.tres" id="3_61ffb"]

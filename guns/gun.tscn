@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://drxsvoxvtuo8u"]
+
+[ext_resource type="Script" uid="uid://073xy0gn8l73" path="res://guns/gun.gd" id="1_rbtxg"]
+[ext_resource type="Texture2D" uid="uid://dpgcngcv2nj54" path="res://assets/guns/guns.svg" id="2_xawhb"]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_rbtxg")
+
+[node name="RotationOffset" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="RotationOffset"]
+position = Vector2(272, 0)
+texture = ExtResource("2_xawhb")
+region_enabled = true
+region_rect = Rect2(629, 1125, 212, 129)
+
+[node name="ShootPos" type="Marker2D" parent="RotationOffset/Sprite2D"]
+show_behind_parent = true
+position = Vector2(116, -43)
+
+[node name="ShootTimer" type="Timer" parent="."]
+one_shot = true

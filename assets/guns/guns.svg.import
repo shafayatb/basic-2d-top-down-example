@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cbb7c22j8pybc"
-path="res://.godot/imported/schimter.png-3375ca8cf02103d77e37253ca9eaa1dc.ctex"
+uid="uid://dpgcngcv2nj54"
+path="res://.godot/imported/guns.svg-612ae2016fe36c8becf220fc99bc4d44.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/schimter.png"
-dest_files=["res://.godot/imported/schimter.png-3375ca8cf02103d77e37253ca9eaa1dc.ctex"]
+source_file="res://assets/guns/guns.svg"
+dest_files=["res://.godot/imported/guns.svg-612ae2016fe36c8becf220fc99bc4d44.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

@@ -12,7 +12,7 @@ const sword_slash_preload = preload("res://attacks/sword_slash.tscn")
 var player: CharacterBody2D
 
 func _ready() -> void:
-	player = get_tree().root.get_child(0)
+	player = get_parent().get_parent()
 	animation_tree.active = true
 		
 func spawn_slash():
