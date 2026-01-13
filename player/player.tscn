@@ -313,7 +313,7 @@ states/Move/position = Vector2(448.9463, 202)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_wodsf"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_32hag"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_tqiix"), "Idle", "Dash", SubResource("AnimationNodeStateMachineTransition_c35mf"), "Dash", "Idle", SubResource("AnimationNodeStateMachineTransition_65viv"), "Dash", "Move", SubResource("AnimationNodeStateMachineTransition_x7c3f"), "Move", "Dash", SubResource("AnimationNodeStateMachineTransition_bjvpn")]
 graph_offset = Vector2(127.40298, 0)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 rotation = 0.0030202356
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_g6k8r")
@@ -329,8 +329,8 @@ visible = false
 shape = SubResource("RectangleShape2D_onrkg")
 
 [node name="Gun" parent="." instance=ExtResource("4_hg6s5")]
-position = Vector2(-4.656613e-10, -2.456677)
-scale = Vector2(0.50000006, 0.50000006)
+position = Vector2(15.993886, -2.0483146)
+scale = Vector2(0.3, 0.3)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_i3pqv")

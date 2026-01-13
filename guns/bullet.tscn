@@ -3,35 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://be4gbxqp70orf" path="res://assets/bullets/red_bullet.png" id="1_61qgc"]
 [ext_resource type="Script" uid="uid://bv6aaygidu4vj" path="res://guns/bullet.gd" id="2_nxpes"]
 
-[sub_resource type="Animation" id="Animation_61qgc"]
-resource_name = "appear"
-length = 0.2
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(0.5, 2),
-"update": 0,
-"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(0.5, 2),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_nxpes"]
 length = 0.001
 tracks/0/type = "value"
@@ -59,6 +30,35 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_61qgc"]
+resource_name = "appear"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(0.5, 0.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 2),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_knduo"]
 resource_name = "remove"
 length = 0.2
@@ -73,7 +73,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(0.5, 2),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(0, 0)]
+"values": [Vector2(0.5, 0.5), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
