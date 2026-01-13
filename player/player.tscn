@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bm4v5ulnu0n8w"]
+[gd_scene load_steps=43 format=3 uid="uid://bm4v5ulnu0n8w"]
 
 [ext_resource type="Texture2D" uid="uid://dta4665i0rs3m" path="res://icon.svg" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://pctoih45moys" path="res://player/player.gd" id="1_g6k8r"]
@@ -30,22 +30,10 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Icon:scale")
+tracks/1/path = NodePath("Icon:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Icon:self_modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -67,22 +55,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(0.5, 2),
 "update": 0,
 "values": [Color(0.39215687, 1, 1, 0.29803923), Color(0.39215687, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_qjkh3"]
-resource_name = "idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Icon:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(0.5, 2, 0.5),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -3), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_8t03j"]
@@ -138,7 +110,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(-1.594, 1)]
+"values": [Vector2(-1, 1), Vector2(-1.594, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_boad6"]
@@ -197,11 +169,68 @@ tracks/1/keys = {
 "values": [Vector2(1, 1), Vector2(1, 1.390625)]
 }
 
+[sub_resource type="Animation" id="Animation_qjkh3"]
+resource_name = "idle_right"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.5, 2, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -3), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ebec5"]
+resource_name = "idle_left"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Icon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(0.5, 2, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -3), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Icon:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rgyib"]
 _data = {
 &"RESET": SubResource("Animation_g6k8r"),
 &"dash": SubResource("Animation_2ieo8"),
-&"idle": SubResource("Animation_qjkh3"),
+&"idle_left": SubResource("Animation_ebec5"),
+&"idle_right": SubResource("Animation_qjkh3"),
 &"move_down": SubResource("Animation_8t03j"),
 &"move_left": SubResource("Animation_rgyib"),
 &"move_right": SubResource("Animation_boad6"),
@@ -231,16 +260,16 @@ blend_point_3/node = SubResource("AnimationNodeAnimation_tqiix")
 blend_point_3/pos = Vector2(0, -1)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g6k8r"]
-animation = &"idle"
+animation = &"idle_left"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_boad6"]
-animation = &"idle"
+animation = &"idle_right"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rgyib"]
-animation = &"idle"
+animation = &"idle_left"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yllr7"]
-animation = &"idle"
+animation = &"idle_right"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_kb6p2"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_g6k8r")
@@ -365,5 +394,5 @@ parameters/conditions/is_dashing = false
 parameters/conditions/is_moving = false
 parameters/conditions/not_moving = false
 parameters/Dash/blend_position = Vector2(0.03752756, 1.0358744)
-parameters/Idle/blend_position = Vector2(-0.9953052, 0.010988951)
+parameters/Idle/blend_position = Vector2(0.0703125, -0.45291483)
 parameters/Move/blend_position = Vector2(-0.9980469, -0.004484296)
