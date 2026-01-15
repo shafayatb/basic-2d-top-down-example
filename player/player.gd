@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var knockback_state: KnockbackState = $StateMachine/KnockbackState
 
 var input_direction: Vector2 = Vector2.ZERO
+var last_facing_x: float = 1.0 
 
 const sword_slash_preload = preload("res://attacks/sword_slash.tscn")
 

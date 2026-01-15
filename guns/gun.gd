@@ -15,7 +15,12 @@ func _ready() -> void:
 	shoot_timer.wait_time = time_betweem_shot
 	
 func _physics_process(delta: float) -> void:
-	rotation_offset.rotation = lerp_angle(rotation_offset.rotation, (get_global_mouse_position() - global_position).angle(), 6.5 * delta)
+	var target_angle = (get_global_mouse_position() - global_position).angle()
+	var parent_scale_x = get_parent().scale.x
+	if parent_scale_x < 0:
+		target_angle = PI - target_angle
+	rotation_offset.rotation = lerp_angle(rotation_offset.rotation, target_angle, 6.5 * delta)
+	#rotation_offset.rotation = lerp_angle(rotation_offset.rotation, (get_global_mouse_position() - global_position).angle(), 6.5 * delta)
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("Shoot"):

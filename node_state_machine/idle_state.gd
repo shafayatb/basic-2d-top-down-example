@@ -11,6 +11,7 @@ func enter():
 	player = state_machine.get_parent()
 	player.velocity = Vector2.ZERO
 	player.playback.travel("Idle")
+	player.animation_tree["parameters/Idle/blend_position"] = player.last_facing_x
 
 func handle_input(event: InputEvent):
 	if Input.is_action_just_pressed("Dash"):

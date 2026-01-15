@@ -31,6 +31,8 @@ func physics_update(delta: float):
 	player.animation_tree["parameters/Move/blend_position"] = direction
 	var acc_weight = delta * ACCELERATION
 	character.velocity = lerp(character.velocity, direction * MAX_SPEED, acc_weight)
+	if direction.x != 0:
+		player.last_facing_x = sign(direction.x)
 	character.move_and_slide()
 
 func handle_input(event: InputEvent):

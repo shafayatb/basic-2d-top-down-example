@@ -17,9 +17,12 @@ func _ready() -> void:
 		
 func spawn_slash():
 	var sword_slash = sword_slash_preload.instantiate()
-	sword_slash.direction = player.input_direction + player.global_position
-	print(sword_slash.scale)
-	if player.input_direction.x == -1:
+	var facing_dir = player.input_direction
+	if facing_dir == Vector2.ZERO:
+		facing_dir = Vector2(player.last_facing_x, 0)
+		
+	sword_slash.direction = facing_dir + player.global_position
+	if facing_dir.x == -1:
 		sword_slash.scale = Vector2(1.0,-1.0)
 	sword_slash.global_position = player.global_position
 	sword_slash.get_node("AnimationPlayer").speed_scale = \

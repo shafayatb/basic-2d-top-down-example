@@ -20,7 +20,7 @@ func enter() -> void:
 		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	).normalized()
 	if dash_dir == Vector2.ZERO:
-		dash_dir = Vector2.RIGHT.normalized()
+		dash_dir = Vector2(player.last_facing_x, 0)
 	player.playback.travel("Dash")
 	player.animation_tree["parameters/Dash/blend_position"] = dash_dir
 	player.velocity = dash_dir * DASH_SPEED
