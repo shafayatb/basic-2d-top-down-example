@@ -17,7 +17,7 @@ func handle_input(event: InputEvent):
 	if Input.is_action_just_pressed("Dash"):
 		state_machine.change_state(StateTypes.State.DASH)
 		return
-	if Input.is_action_pressed("ui_up") or Input.is_action_pressed("ui_down") or \
-			Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("Up") or Input.is_action_pressed("Down") or \
+			Input.is_action_pressed("Left") or Input.is_action_pressed("Right"):
 		state_machine.change_state(StateTypes.State.MOVE)
 	

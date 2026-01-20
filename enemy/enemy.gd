@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var player_node: CharacterBody2D = get_parent().get_node("Player")
 @onready var hit_area: Area2D = $HitArea
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var reticle: Sprite2D = $Reticle
 
 @export var health: float = 3.0
 
@@ -32,3 +33,6 @@ func take_damage(weapon_damage: float):
 	health -= weapon_damage
 	if health <= 0.0:
 		queue_free()
+		
+func targated(is_target: bool):
+	reticle.visible = is_target

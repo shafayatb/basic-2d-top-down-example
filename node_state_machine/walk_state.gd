@@ -16,8 +16,8 @@ func enter():
 func physics_update(delta: float):
 	var character = state_machine.get_parent()
 	var direction = Vector2(
-		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
-		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+		Input.get_action_strength("Right") - Input.get_action_strength("Left"),
+		Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	).normalized()
 	
 	if direction.length() < 0.1:  # Almost no input

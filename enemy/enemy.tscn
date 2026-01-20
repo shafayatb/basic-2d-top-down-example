@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bybxsuxhorvyq"]
+[gd_scene load_steps=9 format=3 uid="uid://bybxsuxhorvyq"]
 
 [ext_resource type="Script" uid="uid://bro7c7ktw8ej7" path="res://enemy/enemy.gd" id="1_4gyqm"]
 [ext_resource type="Texture2D" uid="uid://dta4665i0rs3m" path="res://icon.svg" id="1_7k104"]
+[ext_resource type="Texture2D" uid="uid://j5uobxq1xr8o" path="res://assets/misc/target.png" id="3_ppra6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
 size = Vector2(108, 116)
@@ -94,3 +95,9 @@ debug_color = Color(0.8673131, 0.00055542885, 0.8585275, 0.41960785)
 libraries = {
 &"": SubResource("AnimationLibrary_p200p")
 }
+
+[node name="Reticle" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -80)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_ppra6")

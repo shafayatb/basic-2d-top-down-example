@@ -16,8 +16,8 @@ func enter() -> void:
 	player = state_machine.get_parent()
 	dash_timer = DASH_TIME
 	dash_dir = Vector2(
-		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
-		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+		Input.get_action_strength("Right") - Input.get_action_strength("Left"),
+		Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	).normalized()
 	if dash_dir == Vector2.ZERO:
 		dash_dir = Vector2(player.last_facing_x, 0)
@@ -37,8 +37,8 @@ func physics_update(delta: float):
 
 func exit_dash() -> void:
 	var direction = Vector2(
-		Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left"),
-		Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+		Input.get_action_strength("Right") - Input.get_action_strength("Left"),
+		Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	)
 	if direction != Vector2.ZERO:
 		state_machine.change_state(StateTypes.State.MOVE)
