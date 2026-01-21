@@ -10,12 +10,21 @@ const bullet_scene = preload("res://guns/bullet.tscn")
 
 var can_shoot: bool = true
 
+var player: CharacterBody2D
+var target_position: Vector2
+
 func _ready() -> void:
+	player = get_tree().get_first_node_in_group("Player")
 	shoot_timer.connect("timeout", _shoot_timeout)
 	shoot_timer.wait_time = time_betweem_shot
 	
 func _physics_process(delta: float) -> void:
-	var target_angle = (get_global_mouse_position() - global_position).angle()
+	if player.is_targeted and player.current_target and is_instance_valid(player.current_target):
+		target_position = player.current_target.global_position
+	else:
+		target_position = get_global_mouse_position()
+	
+	var target_angle = (target_position - global_position).angle()
 	var parent_scale_x = get_parent().scale.x
 	if parent_scale_x < 0:
 		target_angle = PI - target_angle

@@ -7,6 +7,8 @@ extends CharacterBody2D
 
 @export var health: float = 3.0
 
+signal died(enemy: Node2D)
+
 var speed: float = 180.0
 
 func _ready() -> void:
@@ -32,6 +34,7 @@ func take_damage(weapon_damage: float):
 	animation_player.play("take_damage")
 	health -= weapon_damage
 	if health <= 0.0:
+		died.emit(self)
 		queue_free()
 		
 func targated(is_target: bool):

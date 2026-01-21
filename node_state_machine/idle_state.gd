@@ -8,10 +8,23 @@ var player: CharacterBody2D
 
 func enter():
 	print("IDLE STATE")
-	player = state_machine.get_parent()
+	player = get_tree().get_first_node_in_group("Player")
 	player.velocity = Vector2.ZERO
 	player.playback.travel("Idle")
-	player.animation_tree["parameters/Idle/blend_position"] = player.last_facing_x
+	
+	if player.is_targeted and player.current_target and is_instance_valid(player.current_target):
+		var facing_dir = player.get_facing_direction_to_enemy()
+		player.last_facing_x = facing_dir
+		player.animation_tree["parameters/Idle/blend_position"] = facing_dir
+	else:
+		player.animation_tree["parameters/Idle/blend_position"] = player.last_facing_x
+
+func physics_update(_delta: float):
+	if player.is_targeted and player.current_target and is_instance_valid(player.current_target):
+		var facing_dir = player.get_facing_direction_to_enemy()
+		if facing_dir != player.last_facing_x:
+			player.last_facing_x = facing_dir
+			player.animation_tree["parameters/Idle/blend_position"] = facing_dir
 
 func handle_input(event: InputEvent):
 	if Input.is_action_just_pressed("Dash"):

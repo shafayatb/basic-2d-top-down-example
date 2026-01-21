@@ -10,11 +10,10 @@ const FRICTION: float = 22.5
 var player: CharacterBody2D
 
 func enter():
-	player = state_machine.get_parent()
+	player = get_tree().get_first_node_in_group("Player")
 	player.playback.travel("Move")
 
 func physics_update(delta: float):
-	var character = state_machine.get_parent()
 	var direction = Vector2(
 		Input.get_action_strength("Right") - Input.get_action_strength("Left"),
 		Input.get_action_strength("Down") - Input.get_action_strength("Up")
@@ -28,12 +27,20 @@ func physics_update(delta: float):
 			return
 	
 	player.input_direction = direction
-	player.animation_tree["parameters/Move/blend_position"] = direction
+	
+	if player.is_targeted and player.current_target and is_instance_valid(player.current_target):
+		var facing_dir = player.get_facing_direction_to_enemy()
+		player.last_facing_x = facing_dir
+		var locked_blend = Vector2(facing_dir, direction.y)
+		player.animation_tree["parameters/Move/blend_position"] = locked_blend
+	else:
+		player.animation_tree["parameters/Move/blend_position"] = direction
+		if direction.x != 0:
+			player.last_facing_x = sign(direction.x) 
 	var acc_weight = delta * ACCELERATION
-	character.velocity = lerp(character.velocity, direction * MAX_SPEED, acc_weight)
-	if direction.x != 0:
-		player.last_facing_x = sign(direction.x)
-	character.move_and_slide()
+	player.velocity = lerp(player.velocity, direction * MAX_SPEED, acc_weight)
+	
+	player.move_and_slide()
 
 func handle_input(event: InputEvent):
 	if Input.is_action_just_pressed("Dash"):
