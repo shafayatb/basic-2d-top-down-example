@@ -12,16 +12,16 @@ func enter():
 	player.velocity = Vector2.ZERO
 	player.playback.travel("Idle")
 	
-	if player.is_targeted and player.current_target and is_instance_valid(player.current_target):
-		var facing_dir = player.get_facing_direction_to_enemy()
+	if player.targeting_system.is_locked_on:
+		var facing_dir = player.targeting_system.get_facing_direction_to_enemy()
 		player.last_facing_x = facing_dir
 		player.animation_tree["parameters/Idle/blend_position"] = facing_dir
 	else:
 		player.animation_tree["parameters/Idle/blend_position"] = player.last_facing_x
 
 func physics_update(_delta: float):
-	if player.is_targeted and player.current_target and is_instance_valid(player.current_target):
-		var facing_dir = player.get_facing_direction_to_enemy()
+	if player.targeting_system.is_locked_on:
+		var facing_dir = player.targeting_system.get_facing_direction_to_enemy()
 		if facing_dir != player.last_facing_x:
 			player.last_facing_x = facing_dir
 			player.animation_tree["parameters/Idle/blend_position"] = facing_dir

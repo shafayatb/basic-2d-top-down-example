@@ -28,8 +28,8 @@ func physics_update(delta: float):
 	
 	player.input_direction = direction
 	
-	if player.is_targeted and player.current_target and is_instance_valid(player.current_target):
-		var facing_dir = player.get_facing_direction_to_enemy()
+	if player.targeting_system.is_locked_on:
+		var facing_dir = player.targeting_system.get_facing_direction_to_enemy()
 		player.last_facing_x = facing_dir
 		var locked_blend = Vector2(facing_dir, direction.y)
 		player.animation_tree["parameters/Move/blend_position"] = locked_blend

@@ -9,12 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://drxsvoxvtuo8u" path="res://guns/gun.tscn" id="4_hg6s5"]
 [ext_resource type="Script" uid="uid://cbf6y3vxobj0e" path="res://node_state_machine/dash_state.gd" id="5_1jxqw"]
 [ext_resource type="Script" uid="uid://bvqyy13f111nq" path="res://node_state_machine/knockback_state.gd" id="7_boad6"]
+[ext_resource type="PackedScene" uid="uid://u6sboks5cq5p" path="res://player/actions/targeting_system.tscn" id="10_8t03j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onrkg"]
 size = Vector2(130, 127)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_hg6s5"]
-radius = 363.7361
 
 [sub_resource type="Animation" id="Animation_ebec5"]
 length = 0.001
@@ -505,12 +503,6 @@ metadata/_custom_type_script = "uid://cbf6y3vxobj0e"
 script = ExtResource("7_boad6")
 metadata/_custom_type_script = "uid://bvqyy13f111nq"
 
-[node name="DetectionArea" type="Area2D" parent="."]
-scale = Vector2(1.0000001, 1.0000001)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-shape = SubResource("CircleShape2D_hg6s5")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_rgyib")
@@ -524,3 +516,5 @@ parameters/conditions/is_moving = false
 parameters/Dash/blend_position = Vector2(0.03752756, 1.0358744)
 parameters/Idle/blend_position = 0.0
 parameters/Move/blend_position = Vector2(-0.72265625, -0.1659193)
+
+[node name="TargetingSystem" parent="." instance=ExtResource("10_8t03j")]

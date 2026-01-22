@@ -36,6 +36,3 @@ func take_damage(weapon_damage: float):
 	if health <= 0.0:
 		died.emit(self)
 		queue_free()
-		
-func targated(is_target: bool):
-	reticle.visible = is_target

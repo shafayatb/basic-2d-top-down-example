@@ -19,8 +19,8 @@ func _ready() -> void:
 	shoot_timer.wait_time = time_betweem_shot
 	
 func _physics_process(delta: float) -> void:
-	if player.is_targeted and player.current_target and is_instance_valid(player.current_target):
-		target_position = player.current_target.global_position
+	if player.targeting_system.is_locked_on:
+		target_position = player.targeting_system.current_target.global_position
 	else:
 		target_position = get_global_mouse_position()
 	
