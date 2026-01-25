@@ -17,9 +17,13 @@ func _ready() -> void:
 		
 func spawn_slash():
 	var sword_slash = sword_slash_preload.instantiate()
-	var facing_dir = player.input_direction
-	if facing_dir == Vector2.ZERO:
-		facing_dir = Vector2(player.last_facing_x, 0)
+	var facing_dir: Vector2
+	if player.targeting_system.is_locked_on:
+		facing_dir = player.targeting_system.get_direction_to_enemy()
+	else:
+		facing_dir = player.input_direction
+		if facing_dir == Vector2.ZERO:
+			facing_dir = Vector2(player.last_facing_x, 0)
 		
 	sword_slash.direction = facing_dir + player.global_position
 	if facing_dir.x == -1:

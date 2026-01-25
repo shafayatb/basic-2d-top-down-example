@@ -3,9 +3,10 @@ extends CharacterBody2D
 @onready var player_node: CharacterBody2D = get_parent().get_node("Player")
 @onready var hit_area: Area2D = $HitArea
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var reticle: Sprite2D = $Reticle
 
 @export var health: float = 3.0
+@export var knockback_force: float = 150.0
+@export var knockback_duration: float = 0.55
 
 signal died(enemy: Node2D)
 
@@ -17,17 +18,17 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	pass
-	#if player_node:
-		#var direction = (player_node.global_position - global_position).normalized()
-		#look_at(player_node.global_position)
-		#velocity = lerp(velocity, direction * speed, 0.5 * delta)
-		#move_and_slide()
+	if player_node:
+		var direction = (player_node.global_position - global_position).normalized()
+		look_at(player_node.global_position)
+		velocity = lerp(velocity, direction * speed, 0.5 * delta)
+		move_and_slide()
 
 
 func _hit(body: Node2D)-> void:
 	if body == player_node:
 		var knockback_direction = (body.global_position - global_position).normalized()
-		body.knockback_state.apply_knockback(knockback_direction, 500.0, 0.55)
+		body.knockback_state.apply_knockback(knockback_direction, knockback_force, knockback_duration)
 		body.state_machine.change_state(StateTypes.State.KNOCKBACK)
 
 func take_damage(weapon_damage: float):
