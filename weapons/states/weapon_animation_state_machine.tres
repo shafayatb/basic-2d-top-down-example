@@ -1,10 +1,13 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=8 format=3 uid="uid://b2jdi3wqteunp"]
+[gd_resource type="AnimationNodeStateMachine" load_steps=11 format=3 uid="uid://b2jdi3wqteunp"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oivwf"]
 animation = &"RESET"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nisn2"]
 animation = &"slash"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cync1"]
+animation = &"slash_1"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5ogyc"]
 animation = &"sword_return"
@@ -18,11 +21,18 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ieqn5"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a5vv2"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_whib4"]
+
 [resource]
 states/Idle/node = SubResource("AnimationNodeAnimation_oivwf")
 states/Idle/position = Vector2(351, 59)
 states/Slash/node = SubResource("AnimationNodeAnimation_nisn2")
 states/Slash/position = Vector2(449, 181)
+states/Slash1/node = SubResource("AnimationNodeAnimation_cync1")
+states/Slash1/position = Vector2(636, 181)
 states/SwordReturn/node = SubResource("AnimationNodeAnimation_5ogyc")
 states/SwordReturn/position = Vector2(624, 72)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_m4avp"), "Idle", "Slash", SubResource("AnimationNodeStateMachineTransition_61ffb"), "Slash", "SwordReturn", SubResource("AnimationNodeStateMachineTransition_8ssqk"), "SwordReturn", "Idle", SubResource("AnimationNodeStateMachineTransition_ieqn5")]
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_m4avp"), "Idle", "Slash", SubResource("AnimationNodeStateMachineTransition_61ffb"), "Slash", "SwordReturn", SubResource("AnimationNodeStateMachineTransition_8ssqk"), "SwordReturn", "Idle", SubResource("AnimationNodeStateMachineTransition_ieqn5"), "Slash", "Slash1", SubResource("AnimationNodeStateMachineTransition_a5vv2"), "Slash1", "SwordReturn", SubResource("AnimationNodeStateMachineTransition_whib4")]
+graph_offset = Vector2(0, 36.337074)

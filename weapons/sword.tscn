@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cechlsw0a43lt"]
+[gd_scene load_steps=14 format=3 uid="uid://cechlsw0a43lt"]
 
 [ext_resource type="Texture2D" uid="uid://cbb7c22j8pybc" path="res://assets/sword/schimter.png" id="1_iuva7"]
 [ext_resource type="Script" uid="uid://dlw7itprk41pp" path="res://weapons/sword.gd" id="1_oivwf"]
@@ -72,7 +72,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0.05),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [],
+"args": ["Slash"],
 "method": &"spawn_slash"
 }]
 }
@@ -106,17 +106,61 @@ tracks/1/keys = {
 "values": [Vector2(-0.28, 0.295), Vector2(-0.3, 0.3)]
 }
 
+[sub_resource type="Animation" id="Animation_61ffb"]
+resource_name = "slash_1"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Schimter:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(0.5, -2),
+"update": 0,
+"values": [-1.2601277, -3.6651917]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Schimter:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0.3, 0.3), Vector2(0.28000003, 0.295)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Slash_1"],
+"method": &"spawn_slash"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5ogyc"]
 _data = {
 &"RESET": SubResource("Animation_oivwf"),
 &"slash": SubResource("Animation_iuva7"),
+&"slash_1": SubResource("Animation_61ffb"),
 &"sword_return": SubResource("Animation_nisn2")
 }
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_61ffb"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_8ssqk"]
-graph_offset = Vector2(-395.9926, 48.120407)
+graph_offset = Vector2(-392.7267, 98.66585)
 nodes/output/position = Vector2(540, 200)
 nodes/WeaponStates/node = ExtResource("3_61ffb")
 nodes/WeaponStates/position = Vector2(-95.07724, 163.75403)
@@ -141,6 +185,7 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+active = false
 tree_root = SubResource("AnimationNodeBlendTree_8ssqk")
 anim_player = NodePath("../AnimationPlayer")
 parameters/TimeScale/scale = 1.0

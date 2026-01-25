@@ -28,5 +28,4 @@ func on_animation_finished(anim_name: StringName):
 		weapon.animation_tree.set("parameters/TimeScale/scale", slash_anim_length / sword_return_time)
 		weapon.playback.travel("SwordReturn")
 	elif anim_name == "sword_return":
-		print("changing to sword idle")
 		state_machine.change_state(StateTypes.State.SWORD_IDLE)

@@ -153,6 +153,7 @@ hframes = 8
 libraries = {
 &"": SubResource("AnimationLibrary_uy0on")
 }
+speed_scale = 2.0
 
 [node name="Area2D" type="Area2D" parent="."]
 
