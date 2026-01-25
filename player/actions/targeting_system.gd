@@ -94,9 +94,10 @@ func _handle_target_lost() -> void:
 
 func _enemy_entered(body: Node2D):
 	if body.is_in_group("enemy"):
-		enemies_in_range.append(body)
-		if body.has_signal("died"):
-			body.died.connect(_on_enemy_death)
+		if body not in enemies_in_range:
+			enemies_in_range.append(body)
+			if body.has_signal("died"):
+				body.died.connect(_on_enemy_death)
 
 func _on_enemy_death(enemy: Node2D) -> void:
 	enemies_in_range.erase(enemy)
