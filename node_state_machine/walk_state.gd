@@ -2,7 +2,6 @@ extends State
 
 class_name WalkState
 
-const STATE_TYPE = StateTypes.State.MOVE
 const MAX_SPEED: float = 64.5
 const ACCELERATION: float = 18.5
 const FRICTION: float = 22.5
@@ -23,7 +22,7 @@ func physics_update(delta: float):
 		var lerp_weight = delta * FRICTION
 		player.velocity = lerp(player.velocity, Vector2.ZERO, lerp_weight)
 		if player.velocity.length() < 5.0:  # Fully stopped
-			state_machine.change_state(StateTypes.State.IDLE)
+			state_machine.change_state(PlayerStates.IDLE)
 			return
 	
 	player.input_direction = direction
@@ -44,4 +43,4 @@ func physics_update(delta: float):
 
 func handle_input(event: InputEvent):
 	if Input.is_action_just_pressed("Dash"):
-		state_machine.change_state(StateTypes.State.DASH)
+		state_machine.change_state(PlayerStates.DASH)

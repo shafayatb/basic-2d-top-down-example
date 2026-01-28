@@ -34,7 +34,11 @@ func spawn_slash(anim_name: String):
 	
 	sword_slash.direction = facing_dir + player.global_position
 	
-	if anim_name == "Slash":
+	if anim_name == "Slash_2":
+		sword_slash.animation_name = "big_slash"
+		
+	
+	if anim_name == "Slash" or anim_name == "Slash_2":
 		sword_slash.scale = Vector2(1.0, 1.0)
 		if facing_dir.x == -1:
 			sword_slash.scale = Vector2(1.0, -1.0)

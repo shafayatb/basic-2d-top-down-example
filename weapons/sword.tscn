@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cechlsw0a43lt"]
+[gd_scene load_steps=15 format=3 uid="uid://cechlsw0a43lt"]
 
 [ext_resource type="Texture2D" uid="uid://cbb7c22j8pybc" path="res://assets/sword/schimter.png" id="1_iuva7"]
 [ext_resource type="Script" uid="uid://dlw7itprk41pp" path="res://weapons/sword.gd" id="1_oivwf"]
@@ -117,10 +117,10 @@ tracks/0/path = NodePath("Schimter:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(0.5, -2),
+"times": PackedFloat32Array(0, 0.05, 0.25),
+"transitions": PackedFloat32Array(0.5, 2, -2),
 "update": 0,
-"values": [-1.2601277, -3.6651917]
+"values": [0.22165681500327966, -1.2601277, -3.6651917]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -129,10 +129,10 @@ tracks/1/path = NodePath("Schimter:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(0.5, 0.5),
+"times": PackedFloat32Array(0, 0.05, 0.3),
+"transitions": PackedFloat32Array(0.5, 2, 0.5),
 "update": 0,
-"values": [Vector2(0.3, 0.3), Vector2(0.28000003, 0.295)]
+"values": [Vector2(-0.28, 0.295), Vector2(0.3, 0.3), Vector2(0.28000003, 0.295)]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -149,18 +149,62 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_8ssqk"]
+resource_name = "slash_2"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Schimter:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0018147528, 0.05, 0.25181475),
+"transitions": PackedFloat32Array(0.5, 2, -2),
+"update": 0,
+"values": [-3.6651917, -2.480112867083942, 0.49567350756638917]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Schimter:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0018147528, 0.05, 0.30181476),
+"transitions": PackedFloat32Array(0.5, 2, 0.5),
+"update": 0,
+"values": [Vector2(0.28000003, 0.295), Vector2(-0.3, 0.3), Vector2(-0.28, 0.295)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Slash_2"],
+"method": &"spawn_slash"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5ogyc"]
 _data = {
 &"RESET": SubResource("Animation_oivwf"),
 &"slash": SubResource("Animation_iuva7"),
 &"slash_1": SubResource("Animation_61ffb"),
+&"slash_2": SubResource("Animation_8ssqk"),
 &"sword_return": SubResource("Animation_nisn2")
 }
 
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_61ffb"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_8ssqk"]
-graph_offset = Vector2(-392.7267, 98.66585)
+graph_offset = Vector2(-383.40225, 158.8573)
 nodes/output/position = Vector2(540, 200)
 nodes/WeaponStates/node = ExtResource("3_61ffb")
 nodes/WeaponStates/position = Vector2(-95.07724, 163.75403)
@@ -185,7 +229,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-active = false
 tree_root = SubResource("AnimationNodeBlendTree_8ssqk")
 anim_player = NodePath("../AnimationPlayer")
 parameters/TimeScale/scale = 1.0
@@ -199,6 +242,19 @@ metadata/_custom_type_script = "uid://c862gema2tgoo"
 script = ExtResource("4_61ffb")
 metadata/_custom_type_script = "uid://bgc65lp8qhouh"
 
-[node name="SwordAttack" type="Node" parent="StateMachine"]
+[node name="SwordAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("4_m4avp")
+anim_tree_path = "slash"
+next_state = NodePath("../SwordAttack2")
+metadata/_custom_type_script = "uid://caci7psd724x5"
+
+[node name="SwordAttack2" type="Node" parent="StateMachine" node_paths=PackedStringArray("next_state")]
+script = ExtResource("4_m4avp")
+anim_tree_path = "slash_1"
+next_state = NodePath("../SwordAttack3")
+metadata/_custom_type_script = "uid://caci7psd724x5"
+
+[node name="SwordAttack3" type="Node" parent="StateMachine"]
+script = ExtResource("4_m4avp")
+anim_tree_path = "slash_2"
 metadata/_custom_type_script = "uid://caci7psd724x5"

@@ -2,8 +2,6 @@ extends State
 
 class_name IdleState
 
-const STATE_TYPE = StateTypes.State.IDLE
-
 var player: CharacterBody2D
 
 func enter():
@@ -28,9 +26,9 @@ func physics_update(_delta: float):
 
 func handle_input(event: InputEvent):
 	if Input.is_action_just_pressed("Dash"):
-		state_machine.change_state(StateTypes.State.DASH)
+		state_machine.change_state(PlayerStates.DASH)
 		return
 	if Input.is_action_pressed("Up") or Input.is_action_pressed("Down") or \
 			Input.is_action_pressed("Left") or Input.is_action_pressed("Right"):
-		state_machine.change_state(StateTypes.State.MOVE)
+		state_machine.change_state(PlayerStates.WALK)
 	

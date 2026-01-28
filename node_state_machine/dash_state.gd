@@ -2,7 +2,6 @@ extends State
 
 class_name  DashState
 
-const STATE_TYPE = StateTypes.State.DASH
 const DASH_SPEED: float = 500.0
 const DASH_TIME: float = 0.12
 var can_dash: bool = true
@@ -41,7 +40,7 @@ func exit_dash() -> void:
 		Input.get_action_strength("Down") - Input.get_action_strength("Up")
 	)
 	if direction != Vector2.ZERO:
-		state_machine.change_state(StateTypes.State.MOVE)
+		state_machine.change_state(PlayerStates.WALK)
 	else:
-		state_machine.change_state(StateTypes.State.IDLE)
+		state_machine.change_state(PlayerStates.IDLE)
 	

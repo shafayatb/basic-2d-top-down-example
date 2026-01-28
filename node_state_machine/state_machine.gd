@@ -9,10 +9,10 @@ var states: Dictionary = {}
 func _ready() -> void:
 	for child in get_children():
 		if child is State:
-			states[child.STATE_TYPE] = child
+			states[child.name.to_lower()] = child
 			child.state_machine = self
 	if initial_state:
-		call_deferred("change_state", initial_state.STATE_TYPE)
+		call_deferred("change_state", initial_state.name.to_lower())
 
 func _process(delta: float) -> void:
 	if current_state:
@@ -26,7 +26,7 @@ func _input(event: InputEvent) -> void:
 	if current_state:
 		current_state.handle_input(event)
 
-func change_state(new_state: StateTypes.State) -> void:
+func change_state(new_state: String) -> void:
 	if current_state:
 		current_state.exit()
 	

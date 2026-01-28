@@ -2,8 +2,6 @@ extends State
 
 class_name SwordIdle
 
-const STATE_TYPE = StateTypes.State.SWORD_IDLE
-
 var weapon: Node2D
 
 func enter():
@@ -13,4 +11,4 @@ func enter():
 	
 func handle_input(event: InputEvent):
 	if Input.is_action_just_pressed("Attack"):
-		state_machine.change_state(StateTypes.State.SWORD_ATTACK)
+		state_machine.change_state(SwordStates.SWORD_ATTACK)
