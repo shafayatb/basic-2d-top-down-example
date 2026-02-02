@@ -1,4 +1,4 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=14 format=3 uid="uid://b2jdi3wqteunp"]
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://b2jdi3wqteunp"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oivwf"]
 animation = &"RESET"

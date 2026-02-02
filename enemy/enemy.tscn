@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://bybxsuxhorvyq"]
+[gd_scene format=3 uid="uid://bybxsuxhorvyq"]
 
 [ext_resource type="Script" uid="uid://bro7c7ktw8ej7" path="res://enemy/enemy.gd" id="1_4gyqm"]
 [ext_resource type="Texture2D" uid="uid://dta4665i0rs3m" path="res://icon.svg" id="1_7k104"]
+[ext_resource type="PackedScene" uid="uid://d3n8s3hkt77ec" path="res://ui/health_bar/custom_health_bar.tscn" id="3_ppra6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4gyqm"]
 size = Vector2(108, 116)
@@ -71,26 +72,30 @@ _data = {
 &"take_damage": SubResource("Animation_ofsxj")
 }
 
-[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+[node name="Enemy" type="CharacterBody2D" unique_id=609184495 groups=["enemy"]]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_4gyqm")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=544659590]
 modulate = Color(0.96862745, 0.38431373, 0.3764706, 1)
 texture = ExtResource("1_7k104")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1573768674]
 visible = false
 shape = SubResource("RectangleShape2D_4gyqm")
 
-[node name="HitArea" type="Area2D" parent="."]
+[node name="HitArea" type="Area2D" parent="." unique_id=1722333979]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea" unique_id=1076539337]
 shape = SubResource("RectangleShape2D_7k104")
 debug_color = Color(0.8673131, 0.00055542885, 0.8585275, 0.41960785)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_p200p")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=661181690]
+libraries/ = SubResource("AnimationLibrary_p200p")
+
+[node name="CustomHealthBar" parent="." unique_id=2003121778 instance=ExtResource("3_ppra6")]
+offset_left = -57.999996
+offset_top = -108.0
+offset_right = 521.9999
+offset_bottom = -38.0

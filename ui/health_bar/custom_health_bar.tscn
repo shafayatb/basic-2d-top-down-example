@@ -4,11 +4,15 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tcvxj"]
 draw_center = false
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
 border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 expand_margin_left = 10.0
 expand_margin_top = 10.0
 expand_margin_right = 10.0
@@ -16,21 +20,27 @@ expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jcluq"]
 bg_color = Color(0.99097854, 0, 0.3032663, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.8, 0.8, 0.8, 0)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aonsi"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6x6p0"]
-bg_color = Color(1, 1, 1, 1)
+bg_color = Color(1, 1, 0, 1)
 
 [node name="CustomHealthBar" type="ProgressBar" unique_id=2003121778]
 offset_left = -8.0
 offset_top = 11.0
 offset_right = 72.0
-offset_bottom = 21.0
+offset_bottom = 51.0
 scale = Vector2(0.2, 0.2)
 theme_override_styles/background = SubResource("StyleBoxFlat_tcvxj")
 theme_override_styles/fill = SubResource("StyleBoxFlat_jcluq")
 step = 0.001
+value = 50.0
 show_percentage = false
 script = ExtResource("1_jcluq")
 
@@ -40,6 +50,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxEmpty_aonsi")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6x6p0")
 show_percentage = false
