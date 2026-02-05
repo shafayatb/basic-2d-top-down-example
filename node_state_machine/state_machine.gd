@@ -4,6 +4,7 @@ class_name StateMachine
 
 @export var initial_state: State
 var current_state: State
+var current_state_name: String
 var states: Dictionary = {}
 
 func _ready() -> void:
@@ -12,6 +13,7 @@ func _ready() -> void:
 			states[child.name.to_lower()] = child
 			child.state_machine = self
 	if initial_state:
+		current_state_name = initial_state.name.to_lower()
 		call_deferred("change_state", initial_state.name.to_lower())
 
 func _process(delta: float) -> void:
@@ -31,6 +33,9 @@ func change_state(new_state: String) -> void:
 		current_state.exit()
 	
 	current_state = states.get(new_state)
-	
+	current_state_name = current_state.name.to_lower()
 	if current_state:
 		current_state.enter()
+		
+func get_current_state() -> String:
+	return current_state_name

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bm4v5ulnu0n8w"]
+[gd_scene format=3 uid="uid://bm4v5ulnu0n8w"]
 
 [ext_resource type="Script" uid="uid://pctoih45moys" path="res://player/player.gd" id="1_g6k8r"]
 [ext_resource type="Texture2D" uid="uid://c8yuwb3dkjxsx" path="res://assets/player/block_char.png" id="2_hg6s5"]
@@ -459,56 +459,56 @@ states/Start/position = Vector2(190, 100)
 transitions = ["Dash", "Move", SubResource("AnimationNodeStateMachineTransition_x7c3f"), "Move", "Dash", SubResource("AnimationNodeStateMachineTransition_bjvpn"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_s7qer"), "Idle", "Move", SubResource("AnimationNodeStateMachineTransition_g4c7l"), "Move", "Idle", SubResource("AnimationNodeStateMachineTransition_knn7v"), "Idle", "Dash", SubResource("AnimationNodeStateMachineTransition_7pqkx"), "Dash", "Idle", SubResource("AnimationNodeStateMachineTransition_uw77l")]
 graph_offset = Vector2(-40.985294, 32.619663)
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=790852730 groups=["Player"]]
 rotation = 0.0030202356
 scale = Vector2(0.5, 0.5)
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_g6k8r")
 
-[node name="Char" type="Node2D" parent="."]
+[node name="Char" type="Node2D" parent="." unique_id=1628007679]
 
-[node name="Icon" type="Sprite2D" parent="Char"]
+[node name="Icon" type="Sprite2D" parent="Char" unique_id=1080891315]
 scale = Vector2(0.9999998, 0.9999998)
 texture = ExtResource("2_hg6s5")
 hframes = 4
 
-[node name="Sword" parent="Char" instance=ExtResource("3_rgyib")]
+[node name="Sword" parent="Char" unique_id=675748031 instance=ExtResource("3_rgyib")]
 scale = Vector2(0.9999997, 0.9999997)
 
-[node name="Gun" parent="Char" instance=ExtResource("4_hg6s5")]
+[node name="Gun" parent="Char" unique_id=1902970058 instance=ExtResource("4_hg6s5")]
 position = Vector2(15.993883, -2.0483143)
 scale = Vector2(0.29999998, 0.29999998)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1242425609]
 visible = false
 shape = SubResource("RectangleShape2D_onrkg")
 
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node" parent="." unique_id=834550690 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_i3pqv")
 initial_state = NodePath("IdleState")
 metadata/_custom_type_script = "uid://c862gema2tgoo"
 
-[node name="WalkState" type="Node" parent="StateMachine"]
+[node name="WalkState" type="Node" parent="StateMachine" unique_id=1428427568]
 script = ExtResource("3_sweqy")
 metadata/_custom_type_script = "uid://do8iluil3rmt2"
 
-[node name="IdleState" type="Node" parent="StateMachine"]
+[node name="IdleState" type="Node" parent="StateMachine" unique_id=685642830]
 script = ExtResource("4_2hs0m")
 metadata/_custom_type_script = "uid://cwere4u6usod4"
 
-[node name="DashState" type="Node" parent="StateMachine"]
+[node name="DashState" type="Node" parent="StateMachine" unique_id=881623245]
 script = ExtResource("5_1jxqw")
 metadata/_custom_type_script = "uid://cbf6y3vxobj0e"
 
-[node name="KnockbackState" type="Node" parent="StateMachine"]
+[node name="KnockbackState" type="Node" parent="StateMachine" unique_id=1524973044]
 script = ExtResource("7_boad6")
 metadata/_custom_type_script = "uid://bvqyy13f111nq"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_rgyib")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1777778034]
+libraries/ = SubResource("AnimationLibrary_rgyib")
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=22932241]
 tree_root = SubResource("AnimationNodeStateMachine_2ieo8")
 anim_player = NodePath("../AnimationPlayer")
 parameters/conditions/is_dashing = false
@@ -517,4 +517,4 @@ parameters/Dash/blend_position = Vector2(0.03752756, 1.0358744)
 parameters/Idle/blend_position = 0.0
 parameters/Move/blend_position = Vector2(-0.72265625, -0.1659193)
 
-[node name="TargetingSystem" parent="." instance=ExtResource("10_8t03j")]
+[node name="TargetingSystem" parent="." unique_id=2104135974 instance=ExtResource("10_8t03j")]

@@ -1,8 +1,18 @@
 [gd_scene format=3 uid="uid://lr86rwlbqqbg"]
 
+[ext_resource type="Script" uid="uid://dyxfg026q54xh" path="res://boss/golem/golem_boss.gd" id="1_1seyn"]
 [ext_resource type="Texture2D" uid="uid://ccvsnxe631vw2" path="res://assets/enemy/bosses/golem.png" id="1_38snd"]
 [ext_resource type="Texture2D" uid="uid://sacupblgrjhc" path="res://assets/attacks/boss_lasers.png" id="2_6hhlb"]
 [ext_resource type="PackedScene" uid="uid://d3n8s3hkt77ec" path="res://ui/health_bar/custom_health_bar.tscn" id="3_xj83x"]
+[ext_resource type="Script" uid="uid://c862gema2tgoo" path="res://node_state_machine/state_machine.gd" id="5_3fse8"]
+[ext_resource type="Script" uid="uid://da775xhi7phgm" path="res://boss/golem/states/golem_idle.gd" id="6_6f7oa"]
+[ext_resource type="Script" uid="uid://3fd1t36ww74l" path="res://boss/golem/states/golem_armor_buff.gd" id="7_bfj5l"]
+[ext_resource type="Script" uid="uid://bhd7542f8uses" path="res://boss/golem/states/golem_dash.gd" id="8_of85f"]
+[ext_resource type="Script" uid="uid://c3t71j1o226bp" path="res://boss/golem/states/golem_death.gd" id="9_xr6pd"]
+[ext_resource type="Script" uid="uid://0rdwometoc5p" path="res://boss/golem/states/golem_follow.gd" id="10_sygyx"]
+[ext_resource type="Script" uid="uid://chyve0ufg02pj" path="res://boss/golem/states/golem_homing_missile.gd" id="11_0l4ew"]
+[ext_resource type="Script" uid="uid://btyukvyesw351" path="res://boss/golem/states/golem_laser_beam.gd" id="12_nblcs"]
+[ext_resource type="Script" uid="uid://diulto0rdm2n8" path="res://boss/golem/states/golem_melee_attack.gd" id="13_u22dg"]
 
 [sub_resource type="Animation" id="Animation_fuvgv"]
 resource_name = "ArmorBuff"
@@ -20,6 +30,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [60, 61, 62, 63, 64, 65, 66, 67, 68, 69]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Laser:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_1seyn"]
 resource_name = "Block"
@@ -35,6 +57,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [30, 31, 32, 33, 34, 35, 36, 37]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Laser:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_bfj5l"]
@@ -70,6 +104,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Laser:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_6f7oa"]
 resource_name = "Glowing"
@@ -86,6 +132,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [10, 11, 12, 13, 14, 15, 16, 17]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Laser:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_7ey1l"]
@@ -104,6 +162,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Laser:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_xj83x"]
@@ -139,6 +209,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [50, 51, 52, 53, 54, 55, 56]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Laser:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_w8cd4"]
 resource_name = "Melee"
@@ -156,6 +238,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [40, 41, 42, 43, 44, 45, 46]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Laser:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_bo4gs"]
@@ -213,6 +307,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [20, 21, 22, 23, 24, 25, 26, 27, 28]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pivot/Laser:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fuvgv"]
 _data = {
@@ -233,7 +339,13 @@ _data = {
 radius = 51.0
 height = 182.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_xj83x"]
+radius = 700.0
+
 [node name="GolemBoss" type="CharacterBody2D" unique_id=2097169315]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_1seyn")
 
 [node name="Golem" type="Sprite2D" parent="." unique_id=1985591852]
 texture = ExtResource("1_38snd")
@@ -268,21 +380,22 @@ grow_horizontal = 2
 grow_vertical = 0
 value = 100.0
 
-[node name="BossName" type="Label" parent="CanvasLayer" unique_id=1757101942]
-visible = false
+[node name="BossName" type="Label" parent="CanvasLayer/CustomHealthBar" unique_id=1757101942]
+layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -148.0
-offset_top = -156.0
-offset_right = 148.0
-offset_bottom = -19.0
+offset_left = -414.99976
+offset_top = -435.0
+offset_right = 511.00024
+offset_bottom = -229.99998
 grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 40
+theme_override_colors/font_color = Color(0.67058825, 0.5411765, 0.5294118, 1)
+theme_override_font_sizes/font_size = 200
 text = "Stone Golem"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -312,7 +425,53 @@ offset_top = -134.0
 offset_right = 30.0
 offset_bottom = -111.0
 text = "Debug"
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=893688194]
 position = Vector2(0, -13)
 shape = SubResource("CapsuleShape2D_of85f")
+
+[node name="PlayerDetection" type="Area2D" parent="." unique_id=223069349]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetection" unique_id=1318479501]
+shape = SubResource("CircleShape2D_xj83x")
+debug_color = Color(0.8726958, 0.3432595, 0.15374604, 0.41960785)
+
+[node name="StateMachine" type="Node" parent="." unique_id=825506491 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_3fse8")
+initial_state = NodePath("GolemIdle")
+metadata/_custom_type_script = "uid://c862gema2tgoo"
+
+[node name="GolemIdle" type="Node" parent="StateMachine" unique_id=111031296]
+script = ExtResource("6_6f7oa")
+metadata/_custom_type_script = "uid://da775xhi7phgm"
+
+[node name="GolemArmorBuff" type="Node" parent="StateMachine" unique_id=1872109398]
+script = ExtResource("7_bfj5l")
+metadata/_custom_type_script = "uid://3fd1t36ww74l"
+
+[node name="GolemDash" type="Node" parent="StateMachine" unique_id=2042252481]
+script = ExtResource("8_of85f")
+metadata/_custom_type_script = "uid://bhd7542f8uses"
+
+[node name="GolemDeath" type="Node" parent="StateMachine" unique_id=448728581]
+script = ExtResource("9_xr6pd")
+metadata/_custom_type_script = "uid://c3t71j1o226bp"
+
+[node name="GolemFollow" type="Node" parent="StateMachine" unique_id=665622158]
+script = ExtResource("10_sygyx")
+metadata/_custom_type_script = "uid://0rdwometoc5p"
+
+[node name="GolemHomingMissile" type="Node" parent="StateMachine" unique_id=793596792]
+script = ExtResource("11_0l4ew")
+metadata/_custom_type_script = "uid://chyve0ufg02pj"
+
+[node name="GolemLaserBeam" type="Node" parent="StateMachine" unique_id=695725605]
+script = ExtResource("12_nblcs")
+metadata/_custom_type_script = "uid://btyukvyesw351"
+
+[node name="GolemMeleeAttack" type="Node" parent="StateMachine" unique_id=925744194]
+script = ExtResource("13_u22dg")
+metadata/_custom_type_script = "uid://diulto0rdm2n8"
