@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://cs462epuobs0o"]
+
+[ext_resource type="Texture2D" uid="uid://chnyhkbttimch" path="res://assets/attacks/golem_projectiles_glow.png" id="1_lhmmf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qonv"]
+atlas = ExtResource("1_lhmmf")
+region = Rect2(0, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihdqr"]
+atlas = ExtResource("1_lhmmf")
+region = Rect2(300, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0n87"]
+atlas = ExtResource("1_lhmmf")
+region = Rect2(600, 0, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahxnh"]
+atlas = ExtResource("1_lhmmf")
+region = Rect2(0, 300, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ikl5"]
+atlas = ExtResource("1_lhmmf")
+region = Rect2(300, 300, 300, 300)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ne7w3"]
+atlas = ExtResource("1_lhmmf")
+region = Rect2(600, 300, 300, 300)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_scd8y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qonv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihdqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0n87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahxnh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ikl5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ne7w3")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mix3u"]
+radius = 21.0
+height = 106.0
+
+[node name="StoneArmBullet" type="Area2D" unique_id=635773278]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=159092060]
+sprite_frames = SubResource("SpriteFrames_scd8y")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.4009141
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1215552573]
+position = Vector2(82, -39)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_mix3u")
