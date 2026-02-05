@@ -12,8 +12,6 @@ var player_entered: bool = false:
 
 func enter():
 	boss = state_machine.get_parent()
-	
-	
 	boss.player_detection.body_entered.connect(_player_detected)
 
 func _player_detected(body):
