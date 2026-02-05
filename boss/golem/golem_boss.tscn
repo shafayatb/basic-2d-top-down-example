@@ -1,0 +1,318 @@
+[gd_scene format=3 uid="uid://lr86rwlbqqbg"]
+
+[ext_resource type="Texture2D" uid="uid://ccvsnxe631vw2" path="res://assets/enemy/bosses/golem.png" id="1_38snd"]
+[ext_resource type="Texture2D" uid="uid://sacupblgrjhc" path="res://assets/attacks/boss_lasers.png" id="2_6hhlb"]
+[ext_resource type="PackedScene" uid="uid://d3n8s3hkt77ec" path="res://ui/health_bar/custom_health_bar.tscn" id="3_xj83x"]
+
+[sub_resource type="Animation" id="Animation_fuvgv"]
+resource_name = "ArmorBuff"
+length = 1.2500125
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Golem:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.125),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [60, 61, 62, 63, 64, 65, 66, 67, 68, 69]
+}
+
+[sub_resource type="Animation" id="Animation_1seyn"]
+resource_name = "Block"
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Golem:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [30, 31, 32, 33, 34, 35, 36, 37]
+}
+
+[sub_resource type="Animation" id="Animation_bfj5l"]
+resource_name = "BossSlain"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/StatusLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3fse8"]
+resource_name = "Death"
+length = 1.7500125
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Golem:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.125, 1.25, 1.375, 1.5, 1.625),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83]
+}
+
+[sub_resource type="Animation" id="Animation_6f7oa"]
+resource_name = "Glowing"
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Golem:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [10, 11, 12, 13, 14, 15, 16, 17]
+}
+
+[sub_resource type="Animation" id="Animation_7ey1l"]
+resource_name = "Idle"
+length = 0.5000125
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Golem:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_xj83x"]
+resource_name = "Laser"
+length = 1.8750125
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Laser:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.125, 1.25, 1.375, 1.5, 1.625, 1.75, 1.8750125),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 0]
+}
+
+[sub_resource type="Animation" id="Animation_fp00a"]
+resource_name = "LaserCast"
+length = 0.8750125
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Golem:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [50, 51, 52, 53, 54, 55, 56]
+}
+
+[sub_resource type="Animation" id="Animation_w8cd4"]
+resource_name = "Melee"
+length = 0.8750125
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Golem:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [40, 41, 42, 43, 44, 45, 46]
+}
+
+[sub_resource type="Animation" id="Animation_bo4gs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot/Laser:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Golem:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/StatusLabel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8q3aw"]
+resource_name = "RangedAttack"
+length = 1.1250125
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Golem:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [20, 21, 22, 23, 24, 25, 26, 27, 28]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fuvgv"]
+_data = {
+&"ArmorBuff": SubResource("Animation_fuvgv"),
+&"Block": SubResource("Animation_1seyn"),
+&"BossSlain": SubResource("Animation_bfj5l"),
+&"Death": SubResource("Animation_3fse8"),
+&"Glowing": SubResource("Animation_6f7oa"),
+&"Idle": SubResource("Animation_7ey1l"),
+&"Laser": SubResource("Animation_xj83x"),
+&"LaserCast": SubResource("Animation_fp00a"),
+&"Melee": SubResource("Animation_w8cd4"),
+&"RESET": SubResource("Animation_bo4gs"),
+&"RangedAttack": SubResource("Animation_8q3aw")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_of85f"]
+radius = 51.0
+height = 182.0
+
+[node name="GolemBoss" type="CharacterBody2D" unique_id=2097169315]
+
+[node name="Golem" type="Sprite2D" parent="." unique_id=1985591852]
+texture = ExtResource("1_38snd")
+hframes = 10
+vframes = 10
+
+[node name="Pivot" type="Node2D" parent="." unique_id=1462579591]
+position = Vector2(9, -78)
+
+[node name="Laser" type="Sprite2D" parent="Pivot" unique_id=1330571980]
+position = Vector2(297, 47)
+texture = ExtResource("2_6hhlb")
+vframes = 15
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1552500810]
+libraries/ = SubResource("AnimationLibrary_fuvgv")
+autoplay = &"Idle"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=901808255]
+
+[node name="CustomHealthBar" parent="CanvasLayer" unique_id=2003121778 instance=ExtResource("3_xj83x")]
+visible = false
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 126.99999
+offset_top = -60.0
+offset_right = 3434.9995
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 0
+value = 100.0
+
+[node name="BossName" type="Label" parent="CanvasLayer" unique_id=1757101942]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -148.0
+offset_top = -156.0
+offset_right = 148.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+text = "Stone Golem"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatusLabel" type="Label" parent="CanvasLayer" unique_id=1993012200]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -193.0
+offset_top = -55.0
+offset_right = 193.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.99607843, 0.7411765, 0.078431375, 1)
+theme_override_font_sizes/font_size = 80
+text = "Boss Slain"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Debug" type="Label" parent="." unique_id=648406009]
+offset_left = -20.0
+offset_top = -134.0
+offset_right = 30.0
+offset_bottom = -111.0
+text = "Debug"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=893688194]
+position = Vector2(0, -13)
+shape = SubResource("CapsuleShape2D_of85f")
