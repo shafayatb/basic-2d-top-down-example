@@ -11,4 +11,4 @@ position = Vector2(841, 204)
 melee_attack_range = 150
 
 [node name="Player" parent="." unique_id=340966670 instance=ExtResource("2_qqlpl")]
-position = Vector2(105.99997, 521)
+position = Vector2(780, 394)

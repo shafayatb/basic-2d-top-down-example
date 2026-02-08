@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dyxfg026q54xh" path="res://boss/golem/golem_boss.gd" id="1_1seyn"]
 [ext_resource type="Texture2D" uid="uid://ccvsnxe631vw2" path="res://assets/enemy/bosses/golem.png" id="1_38snd"]
 [ext_resource type="Texture2D" uid="uid://sacupblgrjhc" path="res://assets/attacks/boss_lasers.png" id="2_6hhlb"]
+[ext_resource type="PackedScene" uid="uid://cs462epuobs0o" path="res://guns/stone_arm_bullet.tscn" id="2_of85f"]
 [ext_resource type="PackedScene" uid="uid://d3n8s3hkt77ec" path="res://ui/health_bar/custom_health_bar.tscn" id="3_xj83x"]
 [ext_resource type="Script" uid="uid://c862gema2tgoo" path="res://node_state_machine/state_machine.gd" id="5_3fse8"]
 [ext_resource type="Script" uid="uid://da775xhi7phgm" path="res://boss/golem/states/golem_idle.gd" id="6_6f7oa"]
@@ -346,6 +347,8 @@ radius = 700.0
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_1seyn")
+projectile_attack_launch_range = 500
+bullet_node = ExtResource("2_of85f")
 
 [node name="Golem" type="Sprite2D" parent="." unique_id=1985591852]
 texture = ExtResource("1_38snd")

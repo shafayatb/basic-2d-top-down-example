@@ -16,6 +16,8 @@ func physics_update(delta: float):
 	
 	if distance < boss.melee_attack_range:
 		state_machine.change_state(GolemStates.GOLEM_MELEE_ATTACK)
+	elif distance > boss.projectile_attack_launch_range:
+		state_machine.change_state(GolemStates.GOLEM_HOMING_MISSILE)
 	
 func exit():
 	boss.set_physics_process(false)

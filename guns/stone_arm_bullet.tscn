@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cs462epuobs0o"]
 
+[ext_resource type="Script" uid="uid://cyyc311v583vs" path="res://guns/stone_arm_bullet.gd" id="1_3qonv"]
 [ext_resource type="Texture2D" uid="uid://chnyhkbttimch" path="res://assets/attacks/golem_projectiles_glow.png" id="1_lhmmf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3qonv"]
@@ -57,6 +58,9 @@ radius = 21.0
 height = 106.0
 
 [node name="StoneArmBullet" type="Area2D" unique_id=635773278]
+collision_layer = 0
+collision_mask = 5
+script = ExtResource("1_3qonv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=159092060]
 sprite_frames = SubResource("SpriteFrames_scd8y")

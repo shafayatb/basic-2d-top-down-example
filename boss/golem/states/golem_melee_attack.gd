@@ -9,7 +9,5 @@ func enter():
 	boss.animation_player.play("Melee")
 	
 func physics_update(_delta: float):
-	print(boss.direction.length())
 	if boss.direction.length() > boss.melee_attack_range:
-		
 		state_machine.change_state(GolemStates.GOLEM_FOLLOW)
