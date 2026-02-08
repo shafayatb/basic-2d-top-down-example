@@ -50,4 +50,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func take_damage(weapon_damage: float):
+	if health <= 0.0:
+		return
 	health -= weapon_damage
