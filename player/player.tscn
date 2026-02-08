@@ -463,7 +463,7 @@ graph_offset = Vector2(-40.985294, 32.619663)
 rotation = 0.0030202356
 scale = Vector2(0.5, 0.5)
 collision_layer = 4
-collision_mask = 0
+collision_mask = 3
 script = ExtResource("1_g6k8r")
 
 [node name="Char" type="Node2D" parent="." unique_id=1628007679]

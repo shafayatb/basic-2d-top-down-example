@@ -7,7 +7,7 @@ var boss: CharacterBody2D
 var player_entered: bool = false:
 	set(value):
 		player_entered = value
-		boss.detect_collision.set_deferred("disabbled", value)
+		boss.detect_collision.set_deferred("disabled", value)
 		boss.custom_health_bar.set_deferred("visible", value)
 
 func enter():
