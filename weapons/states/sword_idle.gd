@@ -5,7 +5,6 @@ class_name SwordIdle
 var weapon: Node2D
 
 func enter():
-	print("Sword Idle")
 	weapon = state_machine.get_parent()
 	weapon.playback.travel("Idle")
 	

@@ -11,13 +11,28 @@ extends CharacterBody2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var custom_health_bar: CustomHealthBar = $CanvasLayer/CustomHealthBar
 @onready var sprite: Sprite2D = $Golem
+@onready var pivot: Node2D = $Pivot
+@onready var hurt_box: CollisionShape2D = $CollisionShape2D
+
 
 var player: CharacterBody2D
 var direction: Vector2
+var DEF = 0
+
+var health: float = 100.0:
+	set(value):
+		health = value
+		custom_health_bar.change_value(value)
+		if value <= 0.0:
+			custom_health_bar.visible = false
+			state_machine.change_state(GolemStates.GOLEM_DEATH)
+		elif value <= custom_health_bar.max_value /2 and DEF == 0:
+			DEF = 5
+			state_machine.change_state(GolemStates.GOLEM_ARMOR_BUFF)
 
 func _ready() -> void:
-	add_to_group("enemy")
 	set_physics_process(false)
+	custom_health_bar._setup_health_bar(health)
 	player = get_tree().get_first_node_in_group("Player")
 	
 func _process(delta: float) -> void:
@@ -33,3 +48,6 @@ func _physics_process(delta: float) -> void:
 	velocity = direction.normalized() * 40
 	
 	move_and_slide()
+	
+func take_damage(weapon_damage: float):
+	health -= weapon_damage

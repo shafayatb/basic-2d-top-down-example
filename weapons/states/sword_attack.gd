@@ -35,7 +35,6 @@ func exit():
 		weapon.animation_tree.disconnect("animation_finished", on_animation_finished)
 
 func on_animation_finished(anim_name: StringName):
-	print(anim_name)
 	if anim_name == anim_tree_path:
 		anim_finished = true
 	elif anim_name == "sword_return":

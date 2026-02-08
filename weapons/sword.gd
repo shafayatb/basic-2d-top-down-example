@@ -6,7 +6,7 @@ extends Node2D
 	animation_tree.get("parameters/WeaponStates/playback")
 @onready var sword_attack: SwordAttack = $StateMachine/SwordAttack
 
-@export var weapon_damage: float = 1.0
+@export var weapon_damage: float = 5.0
 
 const sword_slash_preload = preload("res://attacks/sword_slash.tscn")
 var player: CharacterBody2D

@@ -5,7 +5,6 @@ class_name IdleState
 var player: CharacterBody2D
 
 func enter():
-	print("IDLE STATE")
 	player = get_tree().get_first_node_in_group("Player")
 	player.velocity = Vector2.ZERO
 	player.playback.travel("Idle")
