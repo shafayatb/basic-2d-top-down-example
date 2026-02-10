@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://dpjjmxk6gmdqc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dqfvq"]
+bg_color = Color(0.4678132, 0.13133281, 0.123137854, 1)
+border_width_right = 10
+border_color = Color(0.28691307, 0.06543534, 0.061752655, 1)
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_detail = 1
+
+[sub_resource type="Theme" id="Theme_dqfvq"]
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = null
+Button/styles/normal = SubResource("StyleBoxFlat_dqfvq")
+Button/styles/pressed = null
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t376w"]
+bg_color = Color(0.6761302, 0, 0.20137355, 1)
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wy7hk"]
+bg_color = Color(0.89277744, 0.00013091564, 0.2773573, 1)
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_detail = 1
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_dqfvq"]
+
+[node name="ShopMenu" type="Control" unique_id=1803758443]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1194120487]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 70
+theme_override_constants/margin_bottom = 50
+
+[node name="Panel" type="Panel" parent="MarginContainer" unique_id=1083357758]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel" unique_id=751680283]
+layout_mode = 1
+offset_left = 40.0
+offset_top = 17.0
+offset_right = 80.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 50
+text = "Shop"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel" unique_id=1758150270]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 47.0
+offset_top = -151.0
+offset_right = 245.0
+offset_bottom = 135.0
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="SwordsButon" type="Button" parent="MarginContainer/Panel/VBoxContainer" unique_id=1557949032]
+layout_mode = 2
+theme = SubResource("Theme_dqfvq")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_dqfvq")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t376w")
+theme_override_styles/hover = SubResource("StyleBoxFlat_wy7hk")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_dqfvq")
+text = "Swords"
+
+[node name="GunsButton" type="Button" parent="MarginContainer/Panel/VBoxContainer" unique_id=147957447]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+toggle_mode = true
+button_group = SubResource("ButtonGroup_dqfvq")
+text = "Guns"
+
+[node name="AbilitiesButton" type="Button" parent="MarginContainer/Panel/VBoxContainer" unique_id=1332969248]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_dqfvq")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_dqfvq")
+text = "Abilities"

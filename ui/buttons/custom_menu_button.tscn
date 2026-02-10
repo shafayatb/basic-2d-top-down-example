@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://crielkfyesgxi"]
+
+[ext_resource type="Theme" uid="uid://dn1wpqpjrdwj4" path="res://ui/menu/menu_theme.tres" id="1_eqn80"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tng2o"]
+bg_color = Color(0.13251078, 0.61919206, 0.78289217, 1)
+border_width_bottom = 8
+border_color = Color(0.21446589, 0.72317034, 0.9036104, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pk8q4"]
+bg_color = Color(0.13251078, 0.61919206, 0.78289217, 1)
+border_width_top = 8
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eg164"]
+bg_color = Color(0.13251078, 0.61919206, 0.78289217, 1)
+border_width_bottom = 8
+border_color = Color(0.21446589, 0.72317034, 0.9036104, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pxvh1"]
+
+[node name="CustomMenuButton" type="Button" unique_id=385188337]
+offset_right = 8.0
+offset_bottom = 8.0
+theme = ExtResource("1_eqn80")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_tng2o")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pk8q4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_eg164")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pxvh1")
