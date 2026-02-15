@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://dpjjmxk6gmdqc"]
 
+[ext_resource type="Theme" uid="uid://bmx003aw8m5l" path="res://ui/buttons/shop_button_theme.tres" id="1_t376w"]
+[ext_resource type="Texture2D" uid="uid://cdiv2gtsjqwgh" path="res://assets/ui/coin.png" id="2_i7so1"]
+[ext_resource type="Texture2D" uid="uid://bxdpgkphe8s5f" path="res://assets/ui/gem.png" id="3_6cl0q"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dqfvq"]
 bg_color = Color(0.4678132, 0.13133281, 0.123137854, 1)
 border_width_right = 10
@@ -8,26 +12,31 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_detail = 1
 
-[sub_resource type="Theme" id="Theme_dqfvq"]
-Button/styles/disabled = null
-Button/styles/focus = null
-Button/styles/hover = null
-Button/styles/normal = SubResource("StyleBoxFlat_dqfvq")
-Button/styles/pressed = null
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t376w"]
-bg_color = Color(0.6761302, 0, 0.20137355, 1)
+bg_color = Color(0.9802007, 0.29557794, 0.31652415, 1)
+border_width_right = 10
+border_color = Color(0.80669695, 0.100879215, 0.18132561, 1)
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wy7hk"]
 bg_color = Color(0.89277744, 0.00013091564, 0.2773573, 1)
+border_width_right = 10
+border_color = Color(0.7294252, 0, 0.22056583, 1)
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_detail = 1
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_dqfvq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i7so1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(1, 1, 1, 1)
 
 [node name="ShopMenu" type="Control" unique_id=1803758443]
 layout_mode = 3
@@ -77,7 +86,7 @@ theme_override_constants/separation = 16
 
 [node name="SwordsButon" type="Button" parent="MarginContainer/Panel/VBoxContainer" unique_id=1557949032]
 layout_mode = 2
-theme = SubResource("Theme_dqfvq")
+theme = ExtResource("1_t376w")
 theme_override_font_sizes/font_size = 25
 theme_override_styles/normal = SubResource("StyleBoxFlat_dqfvq")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_t376w")
@@ -88,6 +97,7 @@ text = "Swords"
 
 [node name="GunsButton" type="Button" parent="MarginContainer/Panel/VBoxContainer" unique_id=147957447]
 layout_mode = 2
+theme = ExtResource("1_t376w")
 theme_override_font_sizes/font_size = 25
 toggle_mode = true
 button_group = SubResource("ButtonGroup_dqfvq")
@@ -95,8 +105,117 @@ text = "Guns"
 
 [node name="AbilitiesButton" type="Button" parent="MarginContainer/Panel/VBoxContainer" unique_id=1332969248]
 layout_mode = 2
+theme = ExtResource("1_t376w")
 theme_override_font_sizes/font_size = 25
-theme_override_styles/normal = SubResource("StyleBoxFlat_dqfvq")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_dqfvq")
 text = "Abilities"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Panel" unique_id=587903198]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 268.0
+offset_top = 122.0
+offset_right = -21.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+scroll_hint_mode = 1
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Panel/ScrollContainer" unique_id=1117118418]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="ItemPanel" type="Panel" parent="MarginContainer/Panel/ScrollContainer/GridContainer" unique_id=1812932364]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7so1")
+
+[node name="ItemPanel2" type="Panel" parent="MarginContainer/Panel/ScrollContainer/GridContainer" unique_id=806594018]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7so1")
+
+[node name="ItemPanel3" type="Panel" parent="MarginContainer/Panel/ScrollContainer/GridContainer" unique_id=1216566430]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7so1")
+
+[node name="ItemPanel4" type="Panel" parent="MarginContainer/Panel/ScrollContainer/GridContainer" unique_id=410221959]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7so1")
+
+[node name="ItemPanel5" type="Panel" parent="MarginContainer/Panel/ScrollContainer/GridContainer" unique_id=857495831]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7so1")
+
+[node name="ItemPanel6" type="Panel" parent="MarginContainer/Panel/ScrollContainer/GridContainer" unique_id=308795867]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7so1")
+
+[node name="ItemPanel7" type="Panel" parent="MarginContainer/Panel/ScrollContainer/GridContainer" unique_id=1485506423]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7so1")
+
+[node name="ItemPanel8" type="Panel" parent="MarginContainer/Panel/ScrollContainer/GridContainer" unique_id=367424604]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7so1")
+
+[node name="ItemPanel9" type="Panel" parent="MarginContainer/Panel/ScrollContainer/GridContainer" unique_id=1799466581]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_i7so1")
+
+[node name="Coin" type="Sprite2D" parent="MarginContainer/Panel" unique_id=609804581]
+position = Vector2(704, 54)
+scale = Vector2(0.12000015, 0.12000015)
+texture = ExtResource("2_i7so1")
+
+[node name="CoinAmount" type="Label" parent="MarginContainer/Panel" unique_id=1920263080]
+layout_mode = 0
+offset_left = 718.0
+offset_top = 42.0
+offset_right = 782.0
+offset_bottom = 65.0
+text = "10,000."
+
+[node name="Gem" type="Sprite2D" parent="MarginContainer/Panel" unique_id=1761913688]
+position = Vector2(813.99994, 53.999996)
+scale = Vector2(0.025027923, 0.025027925)
+texture = ExtResource("3_6cl0q")
+
+[node name="GemLabel" type="Label" parent="MarginContainer/Panel" unique_id=940852369]
+layout_mode = 0
+offset_left = 823.0
+offset_top = 42.0
+offset_right = 863.0
+offset_bottom = 65.0
+text = "10"
