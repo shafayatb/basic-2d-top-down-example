@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://r0gs8st4ilj3"]
+
+[sub_resource type="Gradient" id="Gradient_0mo83"]
+colors = PackedColorArray(0, 0.5529412, 0.8745098, 1, 0.12156863, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8a1yh"]
+gradient = SubResource("Gradient_0mo83")
+width = 128
+height = 128
+fill_to = Vector2(1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jfqgd"]
+texture = SubResource("GradientTexture2D_8a1yh")
+texture_margin_left = 4.0
+texture_margin_top = 4.0
+texture_margin_right = 4.0
+texture_margin_bottom = 4.0
+draw_center = false
+
+[sub_resource type="Gradient" id="Gradient_ewwrr"]
+colors = PackedColorArray(1.1551381e-06, 0.43574524, 0.5785357, 1, 0.03529412, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4ga56"]
+gradient = SubResource("Gradient_ewwrr")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5wchh"]
+texture = SubResource("GradientTexture2D_4ga56")
+
+[node name="ShopItemPanel" type="Panel" unique_id=899388879]
+custom_minimum_size = Vector2(150, 150)
+offset_right = 150.0
+offset_bottom = 150.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_jfqgd")
+
+[node name="Panel" type="Panel" parent="." unique_id=2145059126]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_5wchh")
