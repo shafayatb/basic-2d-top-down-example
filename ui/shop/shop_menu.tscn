@@ -92,6 +92,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_dqfvq")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_t376w")
 theme_override_styles/hover = SubResource("StyleBoxFlat_wy7hk")
 toggle_mode = true
+button_pressed = true
 button_group = SubResource("ButtonGroup_dqfvq")
 text = "Swords"
 
@@ -109,7 +110,7 @@ theme = ExtResource("1_t376w")
 theme_override_font_sizes/font_size = 25
 toggle_mode = true
 button_group = SubResource("ButtonGroup_dqfvq")
-text = "Abilities"
+text = "Special Items"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Panel" unique_id=587903198]
 layout_mode = 1
@@ -195,27 +196,29 @@ size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_i7so1")
 
 [node name="Coin" type="Sprite2D" parent="MarginContainer/Panel" unique_id=609804581]
-position = Vector2(704, 54)
-scale = Vector2(0.12000015, 0.12000015)
+position = Vector2(814.75, 60.74996)
+scale = Vector2(0.17249955, 0.17249955)
 texture = ExtResource("2_i7so1")
 
 [node name="CoinAmount" type="Label" parent="MarginContainer/Panel" unique_id=1920263080]
 layout_mode = 0
-offset_left = 718.0
-offset_top = 42.0
-offset_right = 782.0
-offset_bottom = 65.0
-text = "10,000."
+offset_left = 842.0
+offset_top = 43.0
+offset_right = 920.0
+offset_bottom = 78.0
+theme_override_font_sizes/font_size = 25
+text = "10,000"
 
 [node name="Gem" type="Sprite2D" parent="MarginContainer/Panel" unique_id=1761913688]
-position = Vector2(813.99994, 53.999996)
-scale = Vector2(0.025027923, 0.025027925)
+position = Vector2(939.00006, 60.000008)
+scale = Vector2(0.04383408, 0.043834083)
 texture = ExtResource("3_6cl0q")
 
 [node name="GemLabel" type="Label" parent="MarginContainer/Panel" unique_id=940852369]
 layout_mode = 0
-offset_left = 823.0
-offset_top = 42.0
-offset_right = 863.0
-offset_bottom = 65.0
+offset_left = 957.0
+offset_top = 41.0
+offset_right = 997.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 25
 text = "10"
